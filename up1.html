@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Département de Mathématiques</title>
+    <link rel="stylesheet" href="up1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <video autoplay muted loop class="background-video">
+        <source src="background-video2.mp4" type="video/mp4">
+        Ton navigateur ne supporte pas les vidéos HTML5.
+    </video>
+    <header>
+        <div class="header-overlay">
+            <nav>
+                
+                
+                <ul class="nav-links">
+                    <li class="dropdown">
+                        <a href="#" class="nav-link active" data-section="accueil">Espaces</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" id="espace-etudiant-link">Espace Étudiant</a></li>
+                            <li><a href="#" id="espace-prof-link">Espace Professeur</a></li>
+                            <li><a href="#" id="espace-admin-link">Espace Administration</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="actualité.html" >Actualités</a></li>
+                    <li><a href="departement.html"> département</a></li>
+                    <li><a href="contact.html" >Contact</a></li>
+                    
+                
+                        <li class="auth-buttons">
+                            <button id="auth-btn">Se connecter</button>
+                            
+                        </li>
+                  
+                </ul>
+               
+            </nav>
+            
+        </div>
+    </header>
+
+<!-- Modal de connexion -->
+<div id="login-modal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modal-title">Connexion</h2>
+        
+        <!-- Formulaire Étudiant -->
+        <form id="etudiant-form" class="login-form">
+            <div class="form-group">
+                <label for="email-etudiant">Email Institutionnel</label>
+                <input type="email" id="email-etudiant" placeholder="prenom.nom@etu.univ-exemple.fr" required>
+            </div>
+            <div class="form-group">
+                <label for="password-etudiant">Mot de passe</label>
+                <input type="password" id="password-etudiant" placeholder="********" required>
+            </div>
+            <button type="submit" class="submit-btn">Se connecter</button>
+        </form>
+        
+        <!-- Formulaire Professeur -->
+        <form id="professeur-form" class="login-form" style="display:none">
+            <div class="form-group">
+                <label for="email-prof">Email Professionnel</label>
+                <input type="email" id="email-prof" placeholder="p.nom@univ-exemple.fr" required>
+            </div>
+            <div class="form-group">
+                <label for="password-prof">Mot de passe</label>
+                <input type="password" id="password-prof"  placeholder="********" required>
+            </div>
+            <button type="submit" class="submit-btn">Se connecter</button>
+        </form>
+        
+        <!-- Formulaire Admin -->
+        <form id="admin-form" class="login-form" style="display:none">
+            <div class="form-group">
+                <label for="email-admin">Email Administratif</label>
+                <input type="email" id="email-admin" placeholder="p.nom@admin.univ-exemple.fr" required>
+            </div>
+            <div class="form-group">
+                <label for="password-admin">Mot de passe</label>
+                <input type="password" id="password-admin" placeholder="********" required>
+            </div>
+            <button type="submit" class="submit-btn">Se connecter</button>
+        </form>
+    </div>
+</div>
+    <!-- Contenu principal -->
+    <main id="main-content">
+        <!-- Section Accueil -->
+        <section id="accueil-section" class="content-section active">
+            
+            <div class="quick-links">
+                <div class="link-card">
+                    <i class="fas fa-book"></i>
+                    <h3>Programmes</h3>
+                    <p>Découvrez nos programmes d'études en mathématiques.</p>
+                </div>
+                <div class="link-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Corps professoral</h3>
+                    <p>Rencontrez nos professeurs et chercheurs éminents.</p>
+                </div>
+                <div class="link-card">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Événements</h3>
+                    <p>Participez à nos séminaires et conférences.</p>
+                </div>
+            </div>
+            <section class="full-width">
+                <div class="news-date">Date limite d’inscription : Vendredi 25 Avril 2025 à 21h00</div>
+                        <h3 class="news-title"><img src="new.png" width="50px" height="50px">     Formation Certifiante SOLIDWORKS,100% Gratuite pour les Étudiants de l'ENSIT !</h3>
+                        <p>Le centre 4C de l’École Nationale Supérieure d’Ingénieurs de Tunis (ENSIT) a le plaisir de vous offrir une opportunité unique : une formation certifiante en SolidWorks, totalement gratuite, en partenariat avec le centre agréé HLC 
+                            <a  href="actualité.html#formation" style="color: blue;" >Lire la suite →</a> </p>
+
+            </section>
+        </section>
+        
+
+        
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contacts</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Adresse: Montfleury Avenue Taha Hussein,1008</p>
+                <p><i class="fas fa-phone"></i> Téléphone: +216 71 391 166</p>
+                <p><i class="fas fa-envelope"></i> Departement_math@ensit.rnu.tn</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="actualité.html" >Actualités</a></li>
+                    <li><a href="contact.html" >Contact</a></li>
+                    <li><a href="departement.html" >À-propos de Département</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Réseaux sociaux</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Département de Mathématiques. Tous droits réservés.</p>
+        </div>
+    </footer>
+   
+<script src="up111.js"></script>
+    
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const footer = document.querySelector('footer');
+        let lastValidScroll = 0;
+        let isBlocking = false;
+
+        function handleScroll() {
+            const footerRect = footer.getBoundingClientRect();
+            const currentScroll = window.scrollY;
+            
+            // Quand le haut du footer atteint le bas de la fenêtre
+            if (footerRect.top <= window.innerHeight && currentScroll > lastValidScroll) {
+                isBlocking = true;
+                window.scrollTo({
+                    top: lastValidScroll,
+                    behavior: 'auto'
+                });
+            } else {
+                isBlocking = false;
+                lastValidScroll = currentScroll;
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        
+        // Bloquer aussi le scroll avec la molette
+        window.addEventListener('wheel', function(e) {
+            const footerRect = footer.getBoundingClientRect();
+            if (footerRect.top <= window.innerHeight && e.deltaY > 0 && isBlocking) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // Recalculer lors du redimensionnement
+        window.addEventListener('resize', handleScroll);
+    });
+</script>
+
+  

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plateforme - Département de Mathématiques</title>
+    <link rel="stylesheet" href="pla.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="pla.css">
+    
+   
+</head>
+<body >
+    <video autoplay muted loop class="background-video">
+        <source src="background-video.mp4" type="video/mp4">
+        Ton navigateur ne supporte pas les vidéos HTML5.
+      </video>
+    <div style="height: 500px;"></div>
+    <header>
+    
+        <div class="header-content">
+            <h1>Département de Mathématiques</h1>
+            <p>Excellence en recherche et enseignement</p>
+        </div>
+        <div class="user-profile hidden" id="userProfile">
+            <div class="user-avatar" id="userAvatar">U</div>
+            <span id="userName"></span>
+            <button class="logout-btn" id="logoutBtn">connecter</button>
+        </div>
+    
+    
+    <!-- Navigation -->
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo"></h2>
+            </div>
+            <div class="menu">
+        <ul id="mainNav">
+            <li class="dropdown">
+                <a href="#" class="dropbtn">ACCUEIL</a>
+                <div class="dropdown-content">
+                    <a href="étudiant.html">espace étudiant</a>
+                    <a href="professeurs.html">espace professeurs</a>
+                    <a href="admin.html">espace administration</a>
+                    <a href="actualité.html">actualité</a>
+                    <a href="departement.html">A propos de la département</a>
+                    <a href="https://www.ensit.tn/ensit/historique-sommaire/">A propos de l'ensit</a>
+                    <a href="https://www.ensit.tn/clubs/">A propos des clubs </a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">FORMATION</a>
+                <div class="dropdown-content">
+                    <a href="ingénieur.html">formation ingénieur</a>
+                    <a href="master.html">formation master de recherche</a>
+                </div>
+            </li>
+            
+            
+               
+               
+                <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </div>
+</header>
+    <!-- Contenu principal -->
+    <main id="mainContent">
+        <div class="section" id="actualites">
+            <h2>Dernières actualités</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-content">
+                        <div class="news-date">Date limite d’inscription : Vendredi 25 Avril 2025 à 21h00</div>
+                        <h3 class="news-title">Formation Certifiante SOLIDWORKS,100% Gratuite pour les Étudiants de l'ENSIT !</h3>
+                        <p>Le centre 4C de l’École Nationale Supérieure d’Ingénieurs de Tunis (ENSIT) a le plaisir de vous offrir une opportunité unique : une formation certifiante en SolidWorks, totalement gratuite, en partenariat avec le centre agréé HLC <a  href="actualité.html" class="read-more">Lire la suite →</a> </p>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-content">
+                        <div class="news-date">10 octobre 2023</div>
+                        <h3 class="news-title">Nouveau programme de master</h3>
+                        <p>Découvrez notre nouveau master en science des données et intelligence artificielle.</p>
+                    </div>
+                </div>
+            
+               
+            
+                
+              
+        
+        <!-- Espace étudiant -->
+        <div class="section hidden" id="espaceEtudiant">
+            <h2>Espace Étudiant</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-content">
+                        <h3 class="news-title">Emploi du temps</h3>
+                        <p>Consultez votre emploi du temps pour le semestre en cours.</p>
+                        <button class="login-btn teacher-btn" style="margin-top: 1rem;">Voir</button>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-content">
+                        <h3 class="news-title">Notes et résultats</h3>
+                        <p>Accédez à vos notes et résultats d'examens.</p>
+                        <button class="login-btn teacher-btn" style="margin-top: 1rem;">Consulter</button>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-content">
+                        <h3 class="news-title">Ressources pédagogiques</h3>
+                        <p>Téléchargez les cours et exercices.</p>
+                        <button class="login-btn teacher-btn" style="margin-top: 1rem;">Accéder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Espace professeur -->
+        <div class="section hidden" id="espaceProfesseur">
+            <h2>Espace Professeur</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-content">
+                        <h3 class="news-title">Gestion des cours</h3>
+                        <p>Planifiez vos cours et déposez vos ressources.</p>
+                        <button class="login-btn teacher-btn" style="margin-top: 1rem;">Gérer</button>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-content">
+                        <h3 class="news-title">Saisie des notes</h3>
+                        <p>Enregistrez les notes de vos étudiants.</p>
+                        <button class="login-btn teacher-btn" style="margin-top: 1rem;">Saisir</button>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-content">
+                        <h3 class="news-title">Recherche</h3>
+                        <p>Gestion des projets et publications.</p>
+                        <button class="login-btn teacher-btn" style="margin-top: 1rem;">Accéder</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Espace administration -->
+        <div class="section hidden" id="espaceAdmin">
+            <h2>Espace Administration</h2>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-content">
+                        <h3 class="news-title">Gestion des utilisateurs</h3>
+                        <p>Créez et gérez les comptes utilisateurs.</p>
+                        <button class="login-btn admin-btn" style="margin-top: 1rem;">Gérer</button>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-content">
+                        <h3 class="news-title">Planning des salles</h3>
+                        <p>Affectez les salles de cours.</p>
+                        <button class="login-btn admin-btn" style="margin-top: 1rem;">Planifier</button>
+                    </div>
+                </div>
+                
+                <div class="news-card">
+                    <div class="news-content">
+                        <h3 class="news-title">Statistiques</h3>
+                        <p>Consultez les statistiques du département.</p>
+                        <button class="login-btn admin-btn" style="margin-top: 1rem;">Voir</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Pied de page -->
+    <footer>
+        <p>© 2023 Département de Mathématiques - Tous droits réservés</p>
+    </footer>
+    
+    <!-- Modal de connexion -->
+    <div class="login-modal" id="loginModal">
+        <div class="modal-content">
+            <h2>Connectez-vous à la plateforme</h2>
+            <p>Veuillez sélectionner votre profil :</p>
+            <div class="login-options">
+                <button class="login-btn student-btn" id="studentBtn">Étudiant</button>
+                <button class="login-btn teacher-btn" id="teacherBtn">Professeur</button>
+                <button class="login-btn admin-btn" id="adminBtn">Administration</button>
+                <button class="login-btn guest-btn" id="guestBtn">Continuer sans se connecter</button>
+            </div>
+            
+            <div class="login-form hidden" id="loginForm">
+                <input type="text" id="username" placeholder="Nom d'utilisateur" required>
+                <input type="password" id="password" placeholder="Mot de passe" required>
+                <button type="button" id="submitLogin">Se connecter</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Gestion de la connexion et des pages
+        document.addEventListener('DOMContentLoaded', function() {
+            // Éléments du DOM
+            const loginModal = document.getElementById('loginModal');
+            const userProfile = document.getElementById('userProfile');
+            const userName = document.getElementById('userName');
+            const userAvatar = document.getElementById('userAvatar');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const mainNav = document.getElementById('mainNav');
+            const mainContent = document.getElementById('mainContent');
+            
+            // Boutons de connexion
+            const studentBtn = document.getElementById('studentBtn');
+            const teacherBtn = document.getElementById('teacherBtn');
+            const adminBtn = document.getElementById('adminBtn');
+            const guestBtn = document.getElementById('guestBtn');
+            const loginForm = document.getElementById('loginForm');
+            const submitLogin = document.getElementById('submitLogin');
+            
+            // Sections de contenu
+            const sections = {
+                actualites: document.getElementById('actualites'),
+                formations: document.getElementById('formations'),
+                espaceEtudiant: document.getElementById('espaceEtudiant'),
+                espaceProfesseur: document.getElementById('espaceProfesseur'),
+                espaceAdmin: document.getElementById('espaceAdmin')
+            };
+            
+            // Navigation
+            const navLinks = {
+                actu: document.querySelector('.nav-actu'),
+                formation: document.querySelector('.nav-formation'),
+                recherche: document.querySelector('.nav-recherche'),
+                contact: document.querySelector('.nav-contact')
+            };
+            
+            // État de l'application
+            let currentUser = null;
+            
+            // Simuler une base de données d'utilisateurs
+            const users = {
+                student: { username: 'etudiant1', password: 'etudiant123', name: 'Étudiant', type: 'student', color: '#4CAF50' },
+                teacher: { username: 'prof1', password: 'prof123', name: 'Professeur Dupont', type: 'teacher', color: '#2196F3' },
+                admin: { username: 'admin1', password: 'admin123', name: 'Admin', type: 'admin', color: '#f44336' }
+            };
+            
+            // Afficher la modal au chargement si pas d'utilisateur connecté
+            if (!currentUser) {
+                loginModal.classList.remove('hidden');
+            }
+            
+            // Gestion des boutons de type d'utilisateur
+            studentBtn.addEventListener('click', function() {
+                showLoginForm('student');
+            });
+            
+            teacherBtn.addEventListener('click', function() {
+                showLoginForm('teacher');
+            });
+            
+            adminBtn.addEventListener('click', function() {
+                showLoginForm('admin');
+            });
+            
+            // Fonction pour afficher le formulaire de connexion
+            function showLoginForm(userType) {
+                document.querySelector('.login-options').classList.add('hidden');
+                loginForm.classList.remove('hidden');
+                
+                // Stocker le type d'utilisateur dans le bouton de soumission
+                submitLogin.dataset.userType = userType;
+            }
+            
+            // Connexion de l'utilisateur
+            submitLogin.addEventListener('click', function() {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const userType = submitLogin.dataset.userType;
+                
+                // Vérification simple (en production, utiliser une vraie authentification)
+                if (users[userType] && username === users[userType].username && password === users[userType].password) {
+                    loginUser(users[userType]);
+                } else {
+                    alert('Identifiants incorrects');
+                }
+            });
+            
+            // Fonction pour connecter l'utilisateur
+            function loginUser(user) {
+                currentUser = user;
+                loginModal.classList.add('hidden');
+                
+                // Afficher le profil utilisateur
+                userProfile.classList.remove('hidden');
+                userName.textContent = user.name;
+                userAvatar.textContent = user.name.charAt(0);
+                userAvatar.style.backgroundColor = user.color;
+                
+                // Ajuster la navigation selon le type d'utilisateur
+                updateNavigation(user.type);
+                
+                // Afficher l'espace approprié
+                showUserSpace(user.type);
+            }
+            
+            // Déconnexion
+            logoutBtn.addEventListener('click', function() {
+                currentUser = null;
+                userProfile.classList.add('hidden');
+                loginModal.classList.remove('hidden');
+                resetNavigation();
+                showSection('actualites');
+            });
+            
+            // Continuer sans se connecter
+            guestBtn.addEventListener('click', function() {
+                loginModal.classList.add('hidden');
+                resetNavigation();
+                showSection('actualites');
+            });
+            
+            // Mettre à jour la navigation selon le type d'utilisateur
+            function updateNavigation(userType) {
+                // Réinitialiser d'abord
+                resetNavigation();
+                
+                // Activer tous les liens pour les utilisateurs connectés
+                for (const link in navLinks) {
+                    navLinks[link].style.pointerEvents = 'auto';
+                }
+                
+                // Ajouter des liens spécifiques selon le type d'utilisateur
+                const newLi = document.createElement('li');
+                let newLink;
+                
+                switch(userType) {
+                    case 'student':
+                        newLink = document.createElement('a');
+                        newLink.href = '#';
+                        newLink.className = 'nav-espace';
+                        newLink.textContent = 'Espace Étudiant';
+                        newLink.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            showSection('espaceEtudiant');
+                        });
+                        break;
+                    case 'teacher':
+                        newLink = document.createElement('a');
+                        newLink.href = '#';
+                        newLink.className = 'nav-espace';
+                        newLink.textContent = 'Espace Professeur';
+                        newLink.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            showSection('espaceProfesseur');
+                        });
+                        break;
+                    case 'admin':
+                        newLink = document.createElement('a');
+                        newLink.href = '#';
+                        newLink.className = 'nav-espace';
+                        newLink.textContent = 'Espace Admin';
+                        newLink.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            showSection('espaceAdmin');
+                        });
+                        break;
+                }
+                
+                if (newLink) {
+                    newLi.appendChild(newLink);
+                    mainNav.appendChild(newLi);
+                }
+            }
+            
+            // Réinitialiser la navigation
+            function resetNavigation() {
+                // Supprimer les liens ajoutés dynamiquement
+                const dynamicLinks = document.querySelectorAll('.nav-espace');
+                dynamicLinks.forEach(link => {
+                    link.parentNode.remove();
+                });
+                
+                // Désactiver certains liens pour les invités
+                navLinks.recherche.style.pointerEvents = 'none';
+                navLinks.contact.style.pointerEvents = 'none';
+                
+                // Activer les liens de base
+                navLinks.actu.style.pointerEvents = 'auto';
+                navLinks.formation.style.pointerEvents = 'auto';
+                
+                // Gestion des clics sur les liens de navigation
+                navLinks.actu.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showSection('actualites');
+                });
+                
+                navLinks.formation.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    showSection('formations');
+                });
+                
+                navLinks.recherche.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (currentUser) {
+                        // Rediriger vers la section appropriée selon le type d'utilisateur
+                        if (currentUser.type === 'teacher') {
+                            showSection('espaceProfesseur');
+                        } else {
+                            showSection('actualites');
+                        }
+                    } else {
+                        alert('Veuillez vous connecter pour accéder à cette section');
+                    }
+                });
+                
+                navLinks.contact.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (currentUser) {
+                        alert('Page contact pour utilisateurs connectés');
+                    } else {
+                        alert('Veuillez vous connecter pour accéder à cette section');
+                    }
+                });
+            }
+            
+            // Afficher l'espace utilisateur approprié
+            function showUserSpace(userType) {
+                switch(userType) {
+                    case 'student':
+                        showSection('espaceEtudiant');
+                        break;
+                    case 'teacher':
+                        showSection('espaceProfesseur');
+                        break;
+                    case 'admin':
+                        showSection('espaceAdmin');
+                        break;
+                    default:
+                        showSection('actualites');
+                }
+            }
+            
+            // Afficher une section spécifique
+            function showSection(sectionId) {
+                // Cacher toutes les sections
+                for (const section in sections) {
+                    sections[section].classList.add('hidden');
+                }
+                
+                // Afficher la section demandée
+                if (sections[sectionId]) {
+                    sections[sectionId].classList.remove('hidden');
+                }
+            }
+            
+            // Initialiser la navigation
+            resetNavigation();
+        });
+    </script>
+</body>
+</html>
