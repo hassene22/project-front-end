@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PFA Génie Mathématiques Appliquées - ENSIT</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.2rem;
+        }
+        
+        .subtitle {
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .pfa-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .pfa-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .pfa-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .pfa-header {
+            padding: 20px;
+            background-color: var(--secondary-color);
+            color: white;
+            position: relative;
+        }
+        
+        .pfa-title {
+            margin: 0;
+            font-size: 1.3rem;
+        }
+        
+        .pfa-year {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .pfa-preview {
+            height: 250px;
+            background: #eee;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pdf-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .pfa-actions {
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #eee;
+        }
+        
+        .btn {
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2980b9;
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #f0f8ff;
+        }
+        
+        .pfa-description {
+            padding: 15px 20px;
+            font-size: 0.95rem;
+            color: #555;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .pfa-container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-graduation-cap"></i> Projets de Fin d'Études</h1>
+            <p class="subtitle">Génie Mathématiques Appliquées et Modélisation - ENSIT</p>
+        </header>
+        
+        <div class="pfa-container">
+            <!-- PFA 1 -->
+            <div class="pfa-card">
+                <div class="pfa-header">
+                    <h3 class="pfa-title">Optimisation et informatisation d'un système de production reconfigurable</h3>
+                    <span class="pfa-year">2023</span>
+                </div>
+                <div class="pfa-preview">
+                    <iframe class="pdf-iframe" 
+                            src="https://docs.google.com/viewer?url=VOTRE_URL_PDF_1&embedded=true" 
+                            frameborder="0"></iframe>
+                </div>
+                <div class="pfa-description">
+                    Ce projet traite de l'optimisation des systèmes de production reconfigurables grâce à des modèles mathématiques avancés.
+                </div>
+                <div class="pfa-actions">
+                    <a href="https://thesai.org/Downloads/Volume15No10/Paper_44-Optimizing_Production_in_Reconfigurable_Manufacturing_Systems.pdf" class="btn btn-primary" download>
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                    <a href="VOTRE_URL_PDF_1" class="btn btn-secondary" target="_blank">
+                        <i class="fas fa-expand"></i> Plein écran
+                    </a>
+                </div>
+            </div>
+            
+            <!-- PFA 2 -->
+            <div class="pfa-card">
+                <div class="pfa-header">
+                    <h3 class="pfa-title">Conception et réalisation d'un accouplement auto-débrayable</h3>
+                    <span class="pfa-year">2022</span>
+                </div>
+                <div class="pfa-preview">
+                    <iframe class="pdf-iframe" 
+                            src="https://docs.google.com/viewer?url=VOTRE_URL_PDF_2&embedded=true" 
+                            frameborder="0"></iframe>
+                </div>
+                <div class="pfa-description">
+                    Étude mécanique et modélisation mathématique d'un système d'accouplement innovant avec fonction auto-débrayable.
+                </div>
+                <div class="pfa-actions">
+                    <a href="https://fr.scribd.com/document/468305672/rapport-PFA-Ben-Abdallah-pdf" class="btn btn-primary" download>
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                    <a href="https://fr.scribd.com/document/468305672/rapport-PFA-Ben-Abdallah-pdf" class="btn btn-secondary" target="_blank">
+                        <i class="fas fa-expand"></i> Plein écran
+                    </a>
+                </div>
+            </div>
+            
+            <!-- PFA 3 -->
+            <div class="pfa-card">
+                <div class="pfa-header">
+                    <h3 class="pfa-title">Étude et modélisation de la propagation des épidémies</h3>
+                    <span class="pfa-year">2023</span>
+                </div>
+                <div class="pfa-preview">
+                    <iframe class="pdf-iframe" 
+                            src="https://docs.google.com/viewer?url=VOTRE_URL_PDF_3&embedded=true" 
+                            frameborder="0"></iframe>
+                </div>
+                <div class="pfa-description">
+                    Application des modèles compartimentaux (SIR, SEIR) pour analyser et prédire la propagation des maladies infectieuses.
+                </div>
+                <div class="pfa-actions">
+                    <a href="file:///C:/Users/Dhia%20Gdara/Downloads/Modlisationdelapropagationdunepidimie.pdf" class="btn btn-primary" download>
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                    <a href="file:///C:/Users/Dhia%20Gdara/Downloads/Modlisationdelapropagationdunepidimie.pdf" class="btn btn-secondary" target="_blank">
+                        <i class="fas fa-expand"></i> Plein écran
+                    </a>
+                </div>
+            </div>
+            
+            <!-- PFA 4 -->
+            <div class="pfa-card">
+                <div class="pfa-header">
+                    <h3 class="pfa-title">Analyse et optimisation de réseaux de transport</h3>
+                    <span class="pfa-year">2022</span>
+                </div>
+                <div class="pfa-preview">
+                    <iframe class="pdf-iframe" 
+                            src="https://docs.google.com/viewer?url=VOTRE_URL_PDF_4&embedded=true" 
+                            frameborder="0"></iframe>
+                </div>
+                <div class="pfa-description">
+                    Optimisation des flux dans les réseaux de transport urbains à l'aide d'algorithmes de graphes et de programmation linéaire.
+                </div>
+                <div class="pfa-actions">
+                    <a href="https://fr.scribd.com/document/838384937/PFE-SERDOUAIY-OUIAM-Optimisation-Du-Transport-Routier-de-Marchandises-1" class="btn btn-primary" download>
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                    <a href="https://fr.scribd.com/document/838384937/PFE-SERDOUAIY-OUIAM-Optimisation-Du-Transport-Routier-de-Marchandises-1" class="btn btn-secondary" target="_blank">
+                        <i class="fas fa-expand"></i> Plein écran
+                    </a>
+                </div>
+            </div>
+            
+            <!-- PFA 5 -->
+            <div class="pfa-card">
+                <div class="pfa-header">
+                    <h3 class="pfa-title">Simulation numérique de phénomènes physiques</h3>
+                    <span class="pfa-year">2023</span>
+                </div>
+                <div class="pfa-preview">
+                    <iframe class="pdf-iframe" 
+                            src="https://docs.google.com/viewer?url=VOTRE_URL_PDF_5&embedded=true" 
+                            frameborder="0"></iframe>
+                </div>
+                <div class="pfa-description">
+                    Résolution numérique d'équations aux dérivées partielles pour simuler des phénomènes physiques complexes.
+                </div>
+                <div class="pfa-actions">
+                    <a href="https://archimer.ifremer.fr/doc/00105/21638/19219.pdf" class="btn btn-primary" download>
+                        <i class="fas fa-download"></i> Télécharger
+                    </a>
+                    <a href="https://archimer.ifremer.fr/doc/00105/21638/19219.pdf" class="btn btn-secondary" target="_blank">
+                        <i class="fas fa-expand"></i> Plein écran
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p><i class="fas fa-info-circle"></i> Ces projets sont mis à disposition à des fins pédagogiques par l'ENSIT</p>
+            <p>© 2023 Département Génie Mathématiques Appliquées</p>
+        </footer>
+    </div>
+
+    <script>
+        // Script pour améliorer l'interactivité
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animation au chargement
+            const cards = document.querySelectorAll('.pfa-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.5s ease ' + (index * 0.1) + 's';
+                
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100);
+            });
+            
+            // Suivi des téléchargements (exemple)
+            document.querySelectorAll('.btn-primary').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    console.log('Téléchargement initié : ' + this.href);
+                    // Ici vous pourriez ajouter un appel à Google Analytics ou autre
+                });
+            });
+        });
+    </script>
+</body>
+</html>

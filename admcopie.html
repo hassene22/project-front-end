@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Département de Mathématiques</title>
+    <link rel="stylesheet" href="up1111.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+
+.background-section {
+    background-image: url('admin.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 155vh; /* hauteur de l'image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 24vh;
+    width: 100%; 
+}
+.sun-icon {
+  animation: spin 6s linear infinite;
+  display: inline-block;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+
+ 
+</style>
+
+<body>
+    <div class="background-section">
+       
+    </div>
+    <header>
+        <div class="header-overlay1">
+            <nav>
+                
+                
+                <ul class="nav-links">
+                    <li><a href="up1.html" >Accueil</a></li>    
+                    <li><a href="actualité.html" >Actualités</a></li>
+                    <li><a href="departement.html">Dep_Math</a></li>
+                    
+                    <li><a href="contact.html" >Contact</a></li>
+                </ul>   
+            </nav>
+        </div>
+        <div class="header-overlay">
+        
+                <nav>
+                    <ul>
+                      <li><a href="p.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                      <li><a href="dd.html"><i class="fa-solid fa-gears"></i> Gérer  </a></li>
+                      <li><a href="clubs.html"><i class="fas fa-users"></i>Clubs</a></li>
+                      <li><a href="pfa.html"><i class="fas fa-project-diagram"></i> PFA/PFE</a></li>
+                      <div class="dropdown"></div>
+                      <li class="dropdown">
+                        <a href="#" class="nav-link active" ><i class="fas fa-chevron-down"></i>Profile</a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#" id="espace-admin-link">Mon Compte</a></li>
+                            <li><a href="E-etudient.html" id="espace-etudiant-link">Espace Étudiant</a></li>
+                            <li><a href="E-prof.html" id="espace-prof-link">Espace Professeur</a></li>
+                            
+                        </ul>
+                    </li>    
+                    </ul>
+                  </nav>          
+        </div>
+    </header>
+  
+     
+  </head>
+  <body>
+   <!-- Inclure Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<!-- Section Météo avec lien dynamique -->
+<div class="weather-widget">
+  <div class="weather-header">
+    <i class="fas fa-sun sun-icon"></i>
+    <h2>Météo à Montfleury</h2>
+    <p>Avenue Taha Hussein, 1008</p>
+  </div>
+  <div class="weather-body">
+    <div class="weather-info">
+      <h3 id="weather-temp">25°C</h3>
+      <p id="weather-desc">Ensoleillé</p>
+    </div>
+    <div class="weather-extra">
+      <p><i class="fas fa-wind"></i> Vent : 15 km/h</p>
+      <p><i class="fas fa-tint"></i> Humidité : 40%</p>
+      <p>
+        <a class="weather-link" href="https://www.msn.com/fr-fr/meteo/previsions/in-Maakel-Ezzaim,Gouvernorat-Tunis?loc=eyJhIjoiTW9udGZsZXVyeSIsImwiOiJNYWFrZWwgRXp6YWltIiwiciI6IkdvdXZlcm5vcmF0IFR1bmlzIiwiYyI6IlR1bmlzaWUiLCJpIjoiVE4iLCJ0IjoxMDEsImciOiJmci1mciIsIngiOiIxMC4xNzExIiwieSI6IjM2Ljc4ODEifQ%3D%3D&ocid=ansmsnweather&weadegreetype=C" target="_blank">
+          <i class="fas fa-external-link-alt"></i> Voir plus sur MSN Météo
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+.weather-widget {
+  background: linear-gradient(to right, #b9d3ed, #e4ebee);
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  width: 300px;
+  font-family: 'Segoe UI', sans-serif;
+  margin-top: -10vh;
+}
+
+.weather-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.weather-header i {
+  font-size: 2rem;
+  color: #f39c12;
+}
+
+.weather-header h2 {
+  margin: 0.2rem 0;
+  font-size: 1.2rem;
+}
+
+.weather-header p {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.weather-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.weather-info h3 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.weather-info p {
+  font-size: 0.9rem;
+  margin: 0.2rem 0;
+}
+
+.weather-extra {
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+.weather-extra p {
+  margin: 0.2rem 0;
+  color: #333;
+}
+
+.weather-link {
+  text-decoration: none;
+  color: #0077cc;
+  font-weight: 500;
+}
+
+.weather-link:hover {
+  text-decoration: underline;
+}
+.alert-widget {
+  background: linear-gradient(to right, #fdfdfd, #f1f7fc);
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 900px;
+  margin: 5vh auto;
+  font-family: 'Segoe UI', sans-serif;
+  z-index: 10;
+  position: relative;
+  margin-top: -32vh;
+  margin-left: 60vh ;
+}
+
+.alert-header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.animated-bell {
+  font-size: 2rem;
+  color: #e67e22;
+  animation: ring 2s infinite;
+}
+
+@keyframes ring {
+  0% { transform: rotate(0); }
+  10% { transform: rotate(15deg); }
+  20% { transform: rotate(-10deg); }
+  30% { transform: rotate(5deg); }
+  40% { transform: rotate(-5deg); }
+  50% { transform: rotate(0); }
+  100% { transform: rotate(0); }
+}
+
+.alert-header h2 {
+  margin: 0.2rem 0;
+  font-size: 1.4rem;
+  color: #2c3e50;
+}
+
+.alert-header p {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.alert-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.alert-item {
+  background-color: #fff;
+  padding: 1rem;
+  border-left: 6px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.alert-item h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.1rem;
+  color: #34495e;
+}
+
+.alert-item p {
+  margin: 0.2rem 0 0.8rem;
+  color: #666;
+}
+
+.alert-item button {
+  background-color: #007acc;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.alert-item button:hover {
+  background-color: #005fa3;
+}
+
+/* Types d’alertes */
+.alert-item.critical {
+  border-left-color: #e74c3c;
+}
+
+.alert-item.warning {
+  border-left-color: #f39c12;
+}
+
+.alert-item.info {
+  border-left-color: #3498db;
+}
+
+</style>
+<div class="alert-widget">
+  <div class="alert-header">
+    <i class="fas fa-bell animated-bell"></i>
+    <h2>Alertes & Notifications</h2>
+    <p>Dernières actions requises</p>
+  </div>
+  <div class="alert-body">
+    <div class="alert-item critical">
+      <h3>📄 Documents à valider</h3>
+      <p>3 documents en attente de validation</p>
+      <button>Voir les documents</button>
+    </div>
+    <div class="alert-item warning">
+      <h3>👨‍🎓 Étudiants à valider</h3>
+      <p>5 étudiants attendent confirmation</p>
+      <button>Gérer les validations</button>
+    </div>
+    <div class="alert-item info">
+      <h3>📬 Messages non lus</h3>
+      <p>2 nouveaux messages reçus</p>
+      <button>Lire les messages</button>
+    </div>
+  </div>
+</div>
+
+
+  
+<script src="up1111.js"></script>
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Contacts</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Adresse: Montfleury Avenue Taha Hussein,1008</p>
+            <p><i class="fas fa-phone"></i> Téléphone: +216 71 391 166</p>
+            <p><i class="fas fa-envelope"></i> Departement_math@ensit.rnu.tn</p>
+        </div>
+        <div class="footer-section">
+            <h3>Liens rapides</h3>
+            <ul>
+                <li><a href="actualité.html" >Actualités</a></li>
+                <li><a href="contact.html" >Contact</a></li>
+                <li><a href="departement.html" >À-propos de Département</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Réseaux sociaux</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        
+    </div>
+    <div class="footer-bottom">
+    <p>© 2025 Département de Mathématiques - Tous droits réservés</p></div> 
+</footer>  
+
+
+</body>
+</html>
+
+
+<script>
+   
+   document.addEventListener('DOMContentLoaded', function() {
+        const footer = document.querySelector('footer');
+        let lastValidScroll = 0;
+        let isBlocking = false;
+
+        function handleScroll() {
+            const footerRect = footer.getBoundingClientRect();
+            const currentScroll = window.scrollY;
+            
+            // Quand le haut du footer atteint le bas de la fenêtre
+            if (footerRect.top <= window.innerHeight && currentScroll > lastValidScroll) {
+                isBlocking = true;
+                window.scrollTo({
+                    top: lastValidScroll,
+                    behavior: 'auto'
+                });
+            } else {
+                isBlocking = false;
+                lastValidScroll = currentScroll;
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        
+        // Bloquer aussi le scroll avec la molette
+        window.addEventListener('wheel', function(e) {
+            const footerRect = footer.getBoundingClientRect();
+            if (footerRect.top <= window.innerHeight && e.deltaY > 0 && isBlocking) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // Recalculer lors du redimensionnement
+        window.addEventListener('resize', handleScroll);
+    });
+    
+</script>

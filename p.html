@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard École d'Ingénieurs</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .card-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2c3e50;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .chart-container {
+            height: 250px;
+            position: relative;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .animated {
+            animation: fadeIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Carte 1 : Effectifs Étudiants -->
+        <div class="card animated">
+            <div class="card-header">📊 Effectifs Étudiants</div>
+            <div class="chart-container">
+                <canvas id="studentsChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Carte 2 : Diplômés et Personnel -->
+        <div class="card animated">
+            <div class="card-header">🎓 Diplômés / Personnel</div>
+            <div class="chart-container">
+                <canvas id="staffChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Carte 3 : Répartition du Personnel -->
+        <div class="card animated">
+            <div class="card-header">👥 Répartition du Personnel</div>
+            <div class="chart-container">
+                <canvas id="personnelChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Carte 4 MODIFIÉE : Structures & Départements (Graphique Radar) -->
+        <div class="card animated">
+            <div class="card-header">🏛 Structures & Départements</div>
+            <div class="chart-container">
+                <canvas id="radarChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Graphique 1 : Effectifs étudiants
+        const studentsCtx = document.getElementById('studentsChart').getContext('2d');
+        new Chart(studentsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Élèves Ingénieurs', 'Mastériens', 'Doctorants'],
+                datasets: [{
+                    label: 'Nombre',
+                    data: [930, 120, 250],
+                    backgroundColor: ['#3498db', '#2ecc71', '#e74c3c'],
+                    borderWidth: 0
+                }]
+            },
+            options: {
+                responsive: true,
+                animation: { duration: 2000 },
+                scales: { y: { beginAtZero: true } }
+            }
+        });
+
+        // Graphique 2 : Personnel
+        const staffCtx = document.getElementById('staffChart').getContext('2d');
+        new Chart(staffCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Permanents', 'Contractuels', 'Vacataires'],
+                datasets: [{
+                    data: [150, 8, 11],
+                    backgroundColor: ['#9b59b6', '#f39c12', '#1abc9c'],
+                }]
+            },
+            options: {
+                responsive: true,
+                animation: { duration: 2000 }
+            }
+        });
+
+        // Graphique 3 : Répartition personnel
+        const personnelCtx = document.getElementById('personnelChart').getContext('2d');
+        new Chart(personnelCtx, {
+            type: 'pie',
+            data: {
+                labels: ['Corps A', 'Experts', 'Ingénieurs', 'Techniciens', 'Administratifs'],
+                datasets: [{
+                    data: [32, 2, 2, 10, 42],
+                    backgroundColor: ['#3498db', '#e74c3c', '#f1c40f', '#2ecc71', '#9b59b6'],
+                }]
+            },
+            options: {
+                responsive: true,
+                animation: { duration: 2000 }
+            }
+        });
+
+        // NOUVEAU Graphique 4 : Radar pour Structures & Départements
+        const radarCtx = document.getElementById('radarChart').getContext('2d');
+        new Chart(radarCtx, {
+            type: 'radar',
+            data: {
+                labels: ['Structures Recherche', 'Départements'],
+                datasets: [{
+                    label: 'Valeurs comparées',
+                    data: [7, 6],
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    borderColor: '#3498db',
+                    borderWidth: 2,
+                    pointBackgroundColor: '#3498db',
+                    pointRadius: 5
+                }]
+            },
+            options: {
+                responsive: true,
+                animation: { duration: 2000 },
+                scales: {
+                    r: {
+                        angleLines: { display: true },
+                        suggestedMin: 0,
+                        suggestedMax: 10
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

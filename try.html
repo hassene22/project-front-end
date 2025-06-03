@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Gestion des Annonces</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .announcement-card {
+            border-left: 4px solid #0d6efd;
+            transition: all 0.3s ease;
+        }
+        .announcement-card:hover {
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        }
+        .form-section {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-md-3">
+                <!-- Admin sidebar -->
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        Menu Administrateur
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action active">Gestion des Annonces</a>
+                       
+                        <a href="mobirise.html" class="list-group-item list-group-item-action">Paramètres</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <h2 class="mb-4">Gestion des Annonces</h2>
+                
+                <!-- Add/Edit Announcement Form -->
+                <div class="form-section mb-4">
+                    <h4>Créer/Modifier une Annonce</h4>
+                    <form id="announcementForm">
+                        <div class="mb-3">
+                            <label for="announcementTitle" class="form-label">Titre</label>
+                            <input type="text" class="form-control" id="announcementTitle" placeholder="Ex: Formation Certifiante SOLIDWORKS" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="announcementContent" class="form-label">Contenu</label>
+                            <textarea class="form-control" id="announcementContent" rows="5" required>Le centre 4C de l'École Nationale Supérieure d'Ingénieurs de Tunis (ENSIT) a le plaisir de vous offrir une opportunité unique...</textarea>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="announcementStartDate" class="form-label">Date de Début</label>
+                                <input type="date" class="form-control" id="announcementStartDate" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="announcementEndDate" class="form-label">Date de Fin</label>
+                                <input type="date" class="form-control" id="announcementEndDate">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="announcementImportant">
+                            <label class="form-check-label" for="announcementImportant">Annonce importante (mise en avant)</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <button type="button" class="btn btn-outline-secondary">Annuler</button>
+                    </form>
+                </div>
+                
+                <!-- Existing Announcements -->
+                <h4 class="mb-3">Annonces Actives</h4>
+                <div class="card mb-3 announcement-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Formation Certifiante SOLIDWORKS, 100% Gratuite pour les Étudiants de l'ENSIT !</h5>
+                        <div>
+                            <span class="badge bg-success me-2">Active</span>
+                            <span class="badge bg-info">GMAM</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Le centre 4C de l'École Nationale Supérieure d'Ingénieurs de Tunis (ENSIT) a le plaisir de vous offrir une opportunité unique : une formation certifiante en SolidWorks, totalement gratuite, en partenariat avec le centre agréé HLC <a href="#">Lire la suite →</a></p>
+                        <div class="d-flex justify-content-between">
+                            <small class="text-muted">Publié le: 25/05/2025 - Expire le: 10/06/2025</small>
+                            <div>
+                                <button class="btn btn-sm btn-outline-primary me-2">Modifier</button>
+                                <button class="btn btn-sm btn-outline-danger">Supprimer</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                   
+                </div>
+                
+                <!-- Pagination -->
+                <nav aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Précédent</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Suivant</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // JavaScript for handling form submission and other interactions
+        document.getElementById('announcementForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would handle the form submission (AJAX call to backend)
+            alert('Annonce enregistrée avec succès!');
+            // Reset form or update UI as needed
+        });
+        
+        // Additional JavaScript for edit/delete functionality would go here
+    </script>
+</body>
+</html>

@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relevé de Notes - GMAM1</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --light-color: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background-color: #f5f7fa;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .institution {
+            text-align: left;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .info-item {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 14px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: right;
+            font-style: italic;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .passed {
+            background-color: #e8f5e9;
+        }
+        
+        .failed {
+            background-color: #ffebee;
+        }
+        
+        .scroll-container {
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+                background-color: white;
+            }
+            
+            .actions {
+                display: none;
+            }
+            
+            table {
+                box-shadow: none;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .info-section {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .info-item {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="institution">
+        <p>République Tunisienne<br>
+        Ministère de l'Enseignement Supérieur et de la Recherche Scientifique<br>
+        Université de Tunis<br>
+        École Nationale Supérieure d'Ingénieur de Tunis</p>
+    </div>
+    
+    <div class="header">
+        <h1>Relevé de Notes - Semestre 1</h1>
+        <p>Formation d'Ingénieurs en Mathématiques appliquées et Modélisation<br>
+        Classe: GMAM1 | Année universitaire: 2024-2025</p>
+    </div>
+    
+    <div class="info-section">
+        <div class="info-item">
+            <strong>Nombre d'étudiants:</strong> 24
+        </div>
+        <div class="info-item">
+            <strong>Moyenne de classe:</strong> 12.15
+        </div>
+        <div class="info-item">
+            <strong>Meilleure moyenne:</strong> 13.93 (Étudiant 2024334)
+        </div>
+        <div class="info-item">
+            <strong>Taux de réussite:</strong> 87.5%
+        </div>
+    </div>
+    
+    <div class="actions">
+        <button class="btn btn-primary" onclick="window.print()">
+            <i class="fas fa-print"></i> Imprimer
+        </button>
+        <button class="btn btn-secondary" onclick="exportToExcel()">
+            <i class="fas fa-file-excel"></i> Exporter Excel
+        </button>
+    </div>
+    
+    <div class="scroll-container">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">N°</th>
+                    <th rowspan="2">Matricule</th>
+                    <th rowspan="2">Moy. S1</th>
+                    <th colspan="2">Math1/2.5</th>
+                    <th colspan="2">A&Num1/4</th>
+                    <th colspan="2">Conf</th>
+                    <th colspan="2">Optim1/2.5</th>
+                    <th colspan="2">Ang_Fonc2/5</th>
+                    <th colspan="2">Ana_Modèle</th>
+                    <th colspan="2">ASD/3</th>
+                    <th colspan="2">Lg C/3</th>
+                    <th colspan="2">DAQ1/1.5</th>
+                    <th colspan="2">TC_Écrit1/1.5</th>
+                    <th colspan="2">TC_CS</th>
+                </tr>
+                <tr>
+                    <th>Note</th>
+                    <th>Cr</th>
+                    <th>Note</th>
+                    <th>Cr</th>
+                    <th>Note</th>
+                    <th>Cr</th>
+                    <th>Note</th>
+                    <th>Cr</th>
+                    <th>Note</th>
+                    <th>Cr</th>
+                    <th>Note</th>
+                    <th>Cr</th>
+                    <th>Note</th>
+                    <th>Cr</th>
+                    <th>Note</th>
+                    <th>Cr</th>
+                    <th>Note</th>
+                    <th>Cr</th>
+                    <th>Note</th>
+                    <th>Cr</th>
+                    <th>Note</th>
+                    <th>Cr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="passed">
+                    <td>1</td>
+                    <td>2024319</td>
+                    <td>13.63</td>
+                    <td>12.00</td>
+                    <td>3</td>
+                    <td>12.13</td>
+                    <td>4</td>
+                    <td>12.07</td>
+                    <td>7</td>
+                    <td>15.67</td>
+                    <td>3</td>
+                    <td>12.00</td>
+                    <td>3</td>
+                    <td>13.83</td>
+                    <td>6</td>
+                    <td>10.17</td>
+                    <td>3</td>
+                    <td>14.00</td>
+                    <td>3</td>
+                    <td>15.84</td>
+                    <td>1</td>
+                    <td>15.50</td>
+                    <td>1</td>
+                    <td>14.48</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>2</td>
+                    <td>2024320</td>
+                    <td>11.56</td>
+                    <td>10.17</td>
+                    <td>3</td>
+                    <td>12.00</td>
+                    <td>4</td>
+                    <td>11.14</td>
+                    <td>7</td>
+                    <td>14.33</td>
+                    <td>3</td>
+                    <td>8.00</td>
+                    <td>0</td>
+                    <td>11.17</td>
+                    <td>3</td>
+                    <td>8.00</td>
+                    <td>0</td>
+                    <td>10.06</td>
+                    <td>3</td>
+                    <td>14.17</td>
+                    <td>1</td>
+                    <td>11.00</td>
+                    <td>1</td>
+                    <td>13.81</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>3</td>
+                    <td>2024321</td>
+                    <td>11.53</td>
+                    <td>10.83</td>
+                    <td>3</td>
+                    <td>11.50</td>
+                    <td>4</td>
+                    <td>11.19</td>
+                    <td>7</td>
+                    <td>11.00</td>
+                    <td>3</td>
+                    <td>10.67</td>
+                    <td>3</td>
+                    <td>10.83</td>
+                    <td>6</td>
+                    <td>10.33</td>
+                    <td>3</td>
+                    <td>10.00</td>
+                    <td>3</td>
+                    <td>14.17</td>
+                    <td>1</td>
+                    <td>12.00</td>
+                    <td>1</td>
+                    <td>14.50</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>4</td>
+                    <td>2024322</td>
+                    <td>12.22</td>
+                    <td>11.83</td>
+                    <td>3</td>
+                    <td>10.00</td>
+                    <td>4</td>
+                    <td>10.86</td>
+                    <td>7</td>
+                    <td>13.33</td>
+                    <td>3</td>
+                    <td>7.67</td>
+                    <td>0</td>
+                    <td>10.50</td>
+                    <td>3</td>
+                    <td>10.17</td>
+                    <td>3</td>
+                    <td>14.50</td>
+                    <td>3</td>
+                    <td>18.84</td>
+                    <td>1</td>
+                    <td>13.00</td>
+                    <td>1</td>
+                    <td>15.47</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>5</td>
+                    <td>2024323</td>
+                    <td>12.88</td>
+                    <td>15.00</td>
+                    <td>3</td>
+                    <td>14.13</td>
+                    <td>4</td>
+                    <td>14.53</td>
+                    <td>7</td>
+                    <td>10.67</td>
+                    <td>3</td>
+                    <td>6.33</td>
+                    <td>0</td>
+                    <td>8.50</td>
+                    <td>3</td>
+                    <td>12.83</td>
+                    <td>3</td>
+                    <td>12.56</td>
+                    <td>3</td>
+                    <td>16.17</td>
+                    <td>1</td>
+                    <td>19.00</td>
+                    <td>1</td>
+                    <td>16.00</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>6</td>
+                    <td>2024324</td>
+                    <td>10.50</td>
+                    <td>10.33</td>
+                    <td>3</td>
+                    <td>10.13</td>
+                    <td>4</td>
+                    <td>10.22</td>
+                    <td>7</td>
+                    <td>12.00</td>
+                    <td>3</td>
+                    <td>9.33</td>
+                    <td>0</td>
+                    <td>10.67</td>
+                    <td>3</td>
+                    <td>4.33</td>
+                    <td>0</td>
+                    <td>10.13</td>
+                    <td>3</td>
+                    <td>17.84</td>
+                    <td>1</td>
+                    <td>12.00</td>
+                    <td>1</td>
+                    <td>14.33</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>7</td>
+                    <td>2024325</td>
+                    <td>13.41</td>
+                    <td>18.00</td>
+                    <td>3</td>
+                    <td>15.25</td>
+                    <td>4</td>
+                    <td>16.53</td>
+                    <td>7</td>
+                    <td>12.67</td>
+                    <td>3</td>
+                    <td>12.00</td>
+                    <td>3</td>
+                    <td>12.33</td>
+                    <td>6</td>
+                    <td>7.17</td>
+                    <td>0</td>
+                    <td>8.00</td>
+                    <td>0</td>
+                    <td>15.84</td>
+                    <td>1</td>
+                    <td>9.00</td>
+                    <td>0</td>
+                    <td>16.17</td>
+                    <td>1</td>
+                </tr>
+                <tr class="failed">
+                    <td>8</td>
+                    <td>2024326</td>
+                    <td>9.89</td>
+                    <td>5.00</td>
+                    <td>0</td>
+                    <td>7.88</td>
+                    <td>0</td>
+                    <td>6.53</td>
+                    <td>0</td>
+                    <td>12.00</td>
+                    <td>3</td>
+                    <td>12.67</td>
+                    <td>3</td>
+                    <td>12.33</td>
+                    <td>6</td>
+                    <td>5.50</td>
+                    <td>0</td>
+                    <td>11.00</td>
+                    <td>3</td>
+                    <td>14.34</td>
+                    <td>1</td>
+                    <td>10.00</td>
+                    <td>1</td>
+                    <td>14.50</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>9</td>
+                    <td>2024327</td>
+                    <td>13.28</td>
+                    <td>15.50</td>
+                    <td>3</td>
+                    <td>14.00</td>
+                    <td>4</td>
+                    <td>14.70</td>
+                    <td>7</td>
+                    <td>13.00</td>
+                    <td>3</td>
+                    <td>11.33</td>
+                    <td>3</td>
+                    <td>12.17</td>
+                    <td>6</td>
+                    <td>11.67</td>
+                    <td>3</td>
+                    <td>12.00</td>
+                    <td>3</td>
+                    <td>15.67</td>
+                    <td>1</td>
+                    <td>18.00</td>
+                    <td>1</td>
+                    <td>16.33</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>10</td>
+                    <td>2024328</td>
+                    <td>12.72</td>
+                    <td>14.67</td>
+                    <td>3</td>
+                    <td>9.75</td>
+                    <td>0</td>
+                    <td>12.04</td>
+                    <td>3</td>
+                    <td>13.33</td>
+                    <td>3</td>
+                    <td>9.33</td>
+                    <td>0</td>
+                    <td>11.33</td>
+                    <td>3</td>
+                    <td>8.17</td>
+                    <td>0</td>
+                    <td>11.69</td>
+                    <td>3</td>
+                    <td>18.84</td>
+                    <td>1</td>
+                    <td>16.00</td>
+                    <td>1</td>
+                    <td>15.67</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>11</td>
+                    <td>2024329</td>
+                    <td>13.82</td>
+                    <td>17.00</td>
+                    <td>3</td>
+                    <td>17.88</td>
+                    <td>4</td>
+                    <td>17.47</td>
+                    <td>7</td>
+                    <td>9.67</td>
+                    <td>0</td>
+                    <td>12.00</td>
+                    <td>3</td>
+                    <td>10.83</td>
+                    <td>3</td>
+                    <td>11.50</td>
+                    <td>3</td>
+                    <td>10.56</td>
+                    <td>3</td>
+                    <td>14.50</td>
+                    <td>1</td>
+                    <td>13.00</td>
+                    <td>1</td>
+                    <td>11.83</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>12</td>
+                    <td>2024331</td>
+                    <td>11.80</td>
+                    <td>9.00</td>
+                    <td>0</td>
+                    <td>13.50</td>
+                    <td>4</td>
+                    <td>11.40</td>
+                    <td>4</td>
+                    <td>12.83</td>
+                    <td>3</td>
+                    <td>9.33</td>
+                    <td>0</td>
+                    <td>11.08</td>
+                    <td>3</td>
+                    <td>11.00</td>
+                    <td>3</td>
+                    <td>13.25</td>
+                    <td>3</td>
+                    <td>15.17</td>
+                    <td>1</td>
+                    <td>14.00</td>
+                    <td>1</td>
+                    <td>10.67</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>13</td>
+                    <td>2024332</td>
+                    <td>11.16</td>
+                    <td>12.50</td>
+                    <td>3</td>
+                    <td>11.25</td>
+                    <td>4</td>
+                    <td>11.83</td>
+                    <td>7</td>
+                    <td>11.00</td>
+                    <td>3</td>
+                    <td>8.67</td>
+                    <td>0</td>
+                    <td>9.83</td>
+                    <td>3</td>
+                    <td>6.67</td>
+                    <td>0</td>
+                    <td>10.00</td>
+                    <td>3</td>
+                    <td>14.00</td>
+                    <td>1</td>
+                    <td>12.00</td>
+                    <td>1</td>
+                    <td>15.83</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>14</td>
+                    <td>2024333</td>
+                    <td>10.37</td>
+                    <td>14.50</td>
+                    <td>3</td>
+                    <td>10.38</td>
+                    <td>4</td>
+                    <td>12.30</td>
+                    <td>7</td>
+                    <td>10.67</td>
+                    <td>3</td>
+                    <td>5.00</td>
+                    <td>0</td>
+                    <td>7.83</td>
+                    <td>3</td>
+                    <td>7.50</td>
+                    <td>0</td>
+                    <td>13.00</td>
+                    <td>3</td>
+                    <td>14.00</td>
+                    <td>1</td>
+                    <td>5.00</td>
+                    <td>0</td>
+                    <td>14.33</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>15</td>
+                    <td>2024334</td>
+                    <td>13.93</td>
+                    <td>12.17</td>
+                    <td>3</td>
+                    <td>12.75</td>
+                    <td>4</td>
+                    <td>12.48</td>
+                    <td>7</td>
+                    <td>17.00</td>
+                    <td>3</td>
+                    <td>9.00</td>
+                    <td>0</td>
+                    <td>13.00</td>
+                    <td>3</td>
+                    <td>13.00</td>
+                    <td>3</td>
+                    <td>14.25</td>
+                    <td>3</td>
+                    <td>17.84</td>
+                    <td>1</td>
+                    <td>15.00</td>
+                    <td>1</td>
+                    <td>16.17</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>16</td>
+                    <td>2024335</td>
+                    <td>12.38</td>
+                    <td>13.17</td>
+                    <td>3</td>
+                    <td>11.75</td>
+                    <td>4</td>
+                    <td>12.41</td>
+                    <td>7</td>
+                    <td>10.50</td>
+                    <td>3</td>
+                    <td>13.00</td>
+                    <td>3</td>
+                    <td>11.75</td>
+                    <td>6</td>
+                    <td>10.83</td>
+                    <td>3</td>
+                    <td>8.50</td>
+                    <td>0</td>
+                    <td>16.67</td>
+                    <td>1</td>
+                    <td>15.00</td>
+                    <td>1</td>
+                    <td>18.17</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>17</td>
+                    <td>2024337</td>
+                    <td>11.19</td>
+                    <td>9.67</td>
+                    <td>0</td>
+                    <td>11.75</td>
+                    <td>4</td>
+                    <td>10.78</td>
+                    <td>4</td>
+                    <td>16.67</td>
+                    <td>3</td>
+                    <td>6.67</td>
+                    <td>0</td>
+                    <td>11.67</td>
+                    <td>3</td>
+                    <td>5.83</td>
+                    <td>0</td>
+                    <td>7.38</td>
+                    <td>0</td>
+                    <td>15.67</td>
+                    <td>1</td>
+                    <td>11.00</td>
+                    <td>1</td>
+                    <td>16.67</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>18</td>
+                    <td>2024338</td>
+                    <td>13.05</td>
+                    <td>13.67</td>
+                    <td>3</td>
+                    <td>12.00</td>
+                    <td>4</td>
+                    <td>12.78</td>
+                    <td>7</td>
+                    <td>12.33</td>
+                    <td>3</td>
+                    <td>12.00</td>
+                    <td>3</td>
+                    <td>12.17</td>
+                    <td>6</td>
+                    <td>9.83</td>
+                    <td>0</td>
+                    <td>13.38</td>
+                    <td>3</td>
+                    <td>18.50</td>
+                    <td>1</td>
+                    <td>11.00</td>
+                    <td>1</td>
+                    <td>16.67</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>19</td>
+                    <td>2024339</td>
+                    <td>11.99</td>
+                    <td>15.33</td>
+                    <td>3</td>
+                    <td>10.25</td>
+                    <td>4</td>
+                    <td>12.62</td>
+                    <td>7</td>
+                    <td>15.00</td>
+                    <td>3</td>
+                    <td>6.33</td>
+                    <td>0</td>
+                    <td>10.67</td>
+                    <td>3</td>
+                    <td>11.33</td>
+                    <td>3</td>
+                    <td>12.06</td>
+                    <td>3</td>
+                    <td>14.17</td>
+                    <td>1</td>
+                    <td>18.00</td>
+                    <td>1</td>
+                    <td>17.83</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>20</td>
+                    <td>2024340</td>
+                    <td>12.53</td>
+                    <td>15.67</td>
+                    <td>3</td>
+                    <td>10.50</td>
+                    <td>4</td>
+                    <td>12.91</td>
+                    <td>7</td>
+                    <td>15.67</td>
+                    <td>3</td>
+                    <td>8.33</td>
+                    <td>0</td>
+                    <td>12.00</td>
+                    <td>3</td>
+                    <td>6.33</td>
+                    <td>0</td>
+                    <td>12.50</td>
+                    <td>3</td>
+                    <td>18.67</td>
+                    <td>1</td>
+                    <td>15.00</td>
+                    <td>1</td>
+                    <td>15.67</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>21</td>
+                    <td>2024341</td>
+                    <td>12.46</td>
+                    <td>14.00</td>
+                    <td>3</td>
+                    <td>10.88</td>
+                    <td>4</td>
+                    <td>12.33</td>
+                    <td>7</td>
+                    <td>11.00</td>
+                    <td>3</td>
+                    <td>10.33</td>
+                    <td>3</td>
+                    <td>10.67</td>
+                    <td>3</td>
+                    <td>12.50</td>
+                    <td>3</td>
+                    <td>14.38</td>
+                    <td>3</td>
+                    <td>15.84</td>
+                    <td>1</td>
+                    <td>15.00</td>
+                    <td>1</td>
+                    <td>16.00</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>22</td>
+                    <td>2023265</td>
+                    <td>10.19</td>
+                    <td>11.33</td>
+                    <td>3</td>
+                    <td>7.00</td>
+                    <td>0</td>
+                    <td>9.02</td>
+                    <td>3</td>
+                    <td>11.83</td>
+                    <td>3</td>
+                    <td>10.33</td>
+                    <td>3</td>
+                    <td>10.67</td>
+                    <td>6</td>
+                    <td>12.50</td>
+                    <td>3</td>
+                    <td>14.38</td>
+                    <td>3</td>
+                    <td>15.84</td>
+                    <td>1</td>
+                    <td>13.00</td>
+                    <td>1</td>
+                    <td>16.75</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>23</td>
+                    <td>2024343</td>
+                    <td>12.69</td>
+                    <td>14.83</td>
+                    <td>3</td>
+                    <td>12.88</td>
+                    <td>4</td>
+                    <td>13.79</td>
+                    <td>7</td>
+                    <td>11.83</td>
+                    <td>3</td>
+                    <td>8.33</td>
+                    <td>0</td>
+                    <td>10.08</td>
+                    <td>3</td>
+                    <td>12.67</td>
+                    <td>3</td>
+                    <td>10.25</td>
+                    <td>3</td>
+                    <td>16.00</td>
+                    <td>1</td>
+                    <td>10.00</td>
+                    <td>1</td>
+                    <td>12.17</td>
+                    <td>1</td>
+                </tr>
+                <tr class="passed">
+                    <td>24</td>
+                    <td>2024344</td>
+                    <td>12.05</td>
+                    <td>13.50</td>
+                    <td>3</td>
+                    <td>12.25</td>
+                    <td>4</td>
+                    <td>12.83</td>
+                    <td>7</td>
+                    <td>15.67</td>
+                    <td>3</td>
+                    <td>11.00</td>
+                    <td>3</td>
+                    <td>12.33</td>
+                    <td>6</td>
+                    <td>8.83</td>
+                    <td>0</td>
+                    <td>10.25</td>
+                    <td>3</td>
+                    <td>14.34</td>
+                    <td>1</td>
+                    <td>14.00</td>
+                    <td>1</td>
+                    <td>15.33</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="footer">
+        <p>Le Président du Jury: Sofiane KASMI<br>
+        Tunis le, 17/02/2025</p>
+    </div>
+
+    <script>
+        function exportToExcel() {
+            // Ici vous implémenteriez la logique d'export Excel
+            alert("Fonctionnalité d'export Excel sera implémentée ici");
+            // En production, vous utiliseriez une bibliothèque comme SheetJS
+        }
+        
+        // Ajout de tooltips pour les crédits non obtenus
+        document.querySelectorAll('td:contains("0")').forEach(cell => {
+            if (cell.textContent === "0" && cell.previousElementSibling && 
+                parseFloat(cell.previousElementSibling.textContent) < 10) {
+                cell.title = "Note insuffisante pour obtenir les crédits";
+            }
+        });
+    </script>
+</body>
+</html>

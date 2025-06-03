@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Département Mathématiques | ENSIT Tunis</title>
+    <style>
+        :root {
+            --primary-color: #0056b3; /* Bleu ENSIT */
+            --secondary-color: #e63946;
+            --dark-color: #1d3557;
+            --light-color: #f1faee;
+            --accent-color: #a8dadc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #212529;
+            line-height: 1.7;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: cover;
+        }
+        
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            position: relative;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--dark-color);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav ul li {
+            margin: 0 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        
+        nav ul li a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+        
+        nav ul li a.active {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Main Content */
+        main {
+            padding: 50px 0;
+        }
+        
+        .contact-intro {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 0 20px;
+        }
+        
+        .contact-intro h2 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .contact-intro h2::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            border-radius: 2px;
+        }
+        
+        .contact-intro p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+        }
+        
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 350px;
+            max-width: 600px;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-form:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-form h3 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .contact-form h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.1);
+            outline: none;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(to right, var(--primary-color), var(--dark-color));
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            font-size: 1.1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(to right, var(--dark-color), var(--primary-color));
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 350px;
+            max-width: 600px;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .info-card h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .info-item i {
+            color: var(--secondary-color);
+            font-size: 1.3rem;
+            margin-right: 15px;
+            margin-top: 5px;
+            min-width: 25px;
+        }
+        
+        .info-item-content {
+            flex: 1;
+        }
+        
+        .info-item strong {
+            color: var(--dark-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .professor-list {
+            list-style: none;
+        }
+        
+        .professor-list li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .professor-list li:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .professor-name {
+            font-weight: 700;
+            color: var(--dark-color);
+            font-size: 1.1rem;
+        }
+        
+        .professor-title {
+            font-style: italic;
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin: 3px 0;
+        }
+        
+        .professor-email {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-size: 0.95rem;
+            display: inline-block;
+            margin-top: 5px;
+            transition: color 0.3s;
+        }
+        
+        .professor-email:hover {
+            color: var(--secondary-color);
+            text-decoration: underline;
+        }
+        
+        /* Image Viewer */
+        .image-viewer-container {
+            margin-top: 25px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            height: 300px;
+            background-color: #f1f1f1;
+        }
+        
+        #map {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            cursor: grab;
+            transition: transform 0.1s;
+        }
+        
+        .zoom-controls {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            z-index: 10;
+        }
+        
+        .zoom-btn {
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        
+        .zoom-btn:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .image-caption {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 50px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        .image-caption1{
+            width: 200px;
+            height: auto;
+        }
+            
+        
+        
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-icons {
+            margin-bottom: 20px;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.3rem;
+            margin: 0 10px;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        
+        .social-icons a:hover {
+            transform: translateY(-3px);
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        @media (max-width: 768px) {
+  .menu {
+    flex-direction: column;
+  }
+}
+
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.2rem;
+            }
+            
+            header p {
+                font-size: 1.1rem;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .contact-form,
+            .info-card {
+                padding: 30px;
+            }
+            
+            .contact-intro h2 {
+                font-size: 2rem;
+            }
+            
+            .contact-form h3,
+            .info-card h3 {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .contact-form,
+            .info-card {
+                padding: 25px;
+            }
+            
+            .form-group input,
+            .form-group select,
+            .form-group textarea {
+                padding: 10px 12px;
+            }
+            
+            .image-viewer-container {
+                height: 250px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Département de Mathématiques</h1>
+            <p>ENSIT - École Nationale Supérieure des Ingénieurs de Tunis</p>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="up1.html">Accueil</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="container">
+        <section class="contact-intro">
+            <h2>Bienvenue</h2>
+            <p>Notre équipe est à votre disposition pour répondre à vos questions concernant les programmes, la recherche ou toute autre information relative aux activités du département de mathématiques.</p>
+        </section>
+        
+        <div class="contact-content">
+            <section class="contact-form">
+                <h3>Envoyer un message</h3>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" placeholder=" Nom et Prénom" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Adresse email</label>
+                        <input type="email" id="email" name="email" placeholder="Exemple@gmail.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="role">Vous êtes</label>
+                        <select id="role" name="role" required>
+                            <option value="" disabled selected>Sélectionnez votre statut</option>
+                            <option value="etudiant">Étudiant ENSIT</option>
+                            <option value="etudiant_externe">Étudiant externe</option>
+                            <option value="enseignant">Enseignant</option>
+                            <option value="chercheur">Chercheur</option>
+                            <option value="partenaire">Partenaire industriel</option>
+                            <option value="autre">Autre</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Sujet de votre message</label>
+                        <select id="subject" name="subject" required>
+                            <option value="" disabled selected>Sélectionnez un sujet</option>
+                            <option value="admission">Admission et inscription</option>
+                            <option value="programme">Programme d'études</option>
+                            <option value="cours">Cours et emploi du temps</option>
+                            <option value="recherche">Recherche et collaborations</option>
+                            <option value="stage">Stages et opportunités</option>
+                            <option value="autre">Autre demande</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Votre message</label>
+                        <textarea id="message" name="message" placeholder="Décrivez votre demande en détail..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Envoyer
+                    </button>
+                </form>
+            </section>
+            
+            <section class="contact-info">
+                <div class="info-card">
+                    <h3>Contact info</h3>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info-item-content">
+                            <strong>Adresse</strong>
+                            <p>5 Avenue Taha Hussein<br>
+                            BP 56, Bab Mnara 1008<br>
+                            Tunis, Tunisie</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="info-item-content">
+                            <strong>Téléphone</strong>
+                            <p>+216 71 391 166</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info-item-content">
+                            <strong>Email</strong>
+                            <p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=Departement_math@ensit.rnu.tn selected&su=Contacter%20Notre%20Departement Mathématique" target="_blank">
+                                Departement_math@ensit.rnu.tn 
+                              </a>
+                              </p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="info-item-content">
+                            <strong>Horaires d'ouverture</strong>
+                            <p>Lundi à Vendredi: 8h30 - 17h00<br>
+                            Fermé le week-end et jours fériés</p>
+                        </div>
+                    </div>
+
+                    <!-- Interactive Image Viewer -->
+                    <div class="image-viewer-container" id="image-container">
+                        <img src="mapens.jpg" alt="ENSIT" id="map">
+                        <div class="zoom-controls">
+                            <button onclick="zoomIn()">+</button>
+    <button onclick="zoomOut()">-</button>
+                        </div>
+                    </div>
+                    <p class="image-caption">ENSIT - Montfleury Avenue Taha Hussein,1008</p>
+                </div>
+                
+                
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-logo">
+            </div>
+            <img src="R.png" class="image-caption1">
+            <div class="footer-links">
+                <a href="#">Plan du site</a>
+                <a href="#">Mentions légales</a>
+                <a href="#">Accessibilité</a>
+                <a href="#">Confidentialité</a>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 ENSIT - Département de Mathématiques. Tous droits réservés.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const map = document.getElementById('map');
+        let scale = 1;
+        let x = 0, y = 0;
+        let isDragging = false;
+        let startX, startY;
+    
+        function updateTransform() {
+          map.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+        }
+    
+        function zoomIn() {
+          scale += 0.1;
+          updateTransform();
+        }
+    
+        function zoomOut() {
+          if (scale > 0.2) {
+            scale -= 0.1;
+            updateTransform();
+          }
+        }
+    
+        map.addEventListener('mousedown', (e) => {
+          isDragging = true;
+          startX = e.clientX - x;
+          startY = e.clientY - y;
+          map.style.cursor = 'grabbing';
+        });
+    
+        document.addEventListener('mousemove', (e) => {
+          if (isDragging) {
+            x = e.clientX - startX;
+            y = e.clientY - startY;
+            updateTransform();
+          }
+        });
+    
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          map.style.cursor = 'grab';
+        });
+    
+        // Pour mobile
+        map.addEventListener('touchstart', (e) => {
+          isDragging = true;
+          startX = e.touches[0].clientX - x;
+          startY = e.touches[0].clientY - y;
+        });
+    
+        map.addEventListener('touchmove', (e) => {
+          if (isDragging) {
+            x = e.touches[0].clientX - startX;
+            y = e.touches[0].clientY - startY;
+            updateTransform();
+          }
+        });
+    
+        map.addEventListener('touchend', () => {
+          isDragging = false;
+        });
+      </script>
+</body>
+</html>

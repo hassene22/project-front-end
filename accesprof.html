@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espace Enseignants</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            color: #fff;
+        }
+
+        /* Header - 15% de la page */
+        header {
+            height: 15vh;
+            background-image: url('https://images.unsplash.com/photo-1571260898933-5f5ba0a3d7d7');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(50, 61, 214, 0.3);
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(57, 69, 238, 0.7);
+        }
+
+        .header-content {
+            z-index: 1;
+            text-align: center;
+        }
+
+        .header-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Main - 70% de la page */
+        main {
+            flex: 1;
+            min-height: 70vh;
+            background-image: url('https://images.unsplash.com/photo-1434030216411-0b793f4b4173');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        main::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(41, 128, 185, 0.6);
+        }
+
+        .login-container {
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 2rem 3rem;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            color: #2c3e50;
+        }
+
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: #2980b9;
+            font-size: 1.8rem;
+        }
+
+        .role-selector {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .role-btn {
+            flex: 1;
+            padding: 0.8rem;
+            text-align: center;
+            background-color: #ecf0f1;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        .role-btn.active {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .role-btn:first-child {
+            border-right: 1px solid #ddd;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .login-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .forgot-password {
+            display: block;
+            text-align: center;
+            margin-top: 1rem;
+            color: #7f8c8d;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .forgot-password:hover {
+            color: #3498db;
+        }
+
+        /* Footer - 15% de la page */
+        footer {
+            height: 15vh;
+            background-image: url('https://images.unsplash.com/photo-1571260898933-5f5ba0a3d7d7');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        footer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(44, 62, 80, 0.8);
+        }
+
+        .footer-content {
+            z-index: 1;
+            padding: 0 1rem;
+        }
+
+        .footer-content p {
+            margin: 0.3rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 1.8rem;
+            }
+            
+            .login-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Espace Enseignants/Administrateurs</h1>
+            <p>Accès à la plateforme pédagogique</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="login-container">
+            <h2>Connexion</h2>
+            
+            <div class="role-selector">
+                <button class="role-btn active">Enseignant</button>
+                <button class="role-btn">Administrateur</button>
+            </div>
+            
+            <form>
+                <div class="form-group">
+                    <label for="email">Email académique</label>
+                    <input type="email" id="email" placeholder="prenom.nom@education.fr" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="login-btn">Accéder à l'espace</button>
+                <a href="#" class="forgot-password">Mot de passe oublié ?</a>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 Plateforme Éducative - Ministère de l'Éducation</p>
+            <p>Assistance technique: <a href="https://mail.google.com/mail/?view=cm&fs=1&to= Departement_math@ensit.rnu.tn  selected&su=Contacter%20Notre%20Departement Mathématique" target="_blank">
+                Departement_math@ensit.rnu.tn 
+              </a> | Tel: 71 39 11 66</p>
+        </div>
+    </footer>
+
+    <script>
+        // Script pour le sélecteur de rôle
+        const roleBtns = document.querySelectorAll('.role-btn');
+        
+        roleBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                roleBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

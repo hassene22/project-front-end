@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="departement.css">
+</head>
+
+
+<body>
+    <div class="background-section">
+    </div>
+    <header>
+        <div class="header-overlay">
+            <nav>
+                
+                
+                <ul class="nav-links">
+                    <li><a href="up1.html" >Accueil</a></li>    
+                    <li><a href="actualité.html" >Actualités</a></li>
+                    <li class="dropdown">
+                        
+                        <a href="#" class="dropbtn">Formation</a>
+                        <div class="dropdown-content">
+                            <a href="master.html">Formation master en Mathématiques</a>
+                            <a href="ingénieur.html">Formation Ingénieur en Mathématiques</a>
+                        </div>
+                    </li>
+                    <li><a href="contact.html" >Contact</a></li>
+                    
+                
+                </ul>
+               
+            </nav>
+            
+        </div>
+    </header>
+    
+    <video id="backgroundVideo" autoplay muted loop class="background-video" style="cursor: pointer;">
+        <source src="genie-math.mp4" type="video/mp4">
+        Ton navigateur ne supporte pas les vidéos HTML5.
+    </video>
+
+    <script>
+        const video = document.getElementById('backgroundVideo');
+      
+        video.addEventListener('click', function () {
+          // Activer le son
+          video.muted = false;
+          video.play();
+      
+          // Plein écran
+          if (video.requestFullscreen) {
+            video.requestFullscreen();
+          } else if (video.webkitRequestFullscreen) {
+            video.webkitRequestFullscreen();
+          } else if (video.msRequestFullscreen) {
+            video.msRequestFullscreen();
+          }
+        });
+      </script>
+      
+      
+    
+      
+    
+        
+    <div class="image-container"></div> <!-- Pas de contenu supplémentaire, seulement l'image en arrière-plan -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contacts</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Adresse: Montfleury Avenue Taha Hussein,1008</p>
+                <p><i class="fas fa-phone"></i> Téléphone: +216 71 391 166</p>
+                <p><i class="fas fa-envelope"></i> Departement_math@ensit.rnu.tn</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="actualité.html" >Actualités</a></li>
+                    <li><a href="contact.html" >Contact</a></li>
+                    <li><a href="departement.html" >À-propos de Département</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Réseaux sociaux</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+        </div>
+        <div class="footer-bottom">
+        <p>© 2025 Département de Mathématiques - Tous droits réservés</p></div> 
+    </footer>    
+</body>
+</html>

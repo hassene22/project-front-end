@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Annonces – Espace Administratif</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", sans-serif;
+      background-color: #eef2f5;
+    }
+
+    #annonces-admin {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px 20px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+      font-size: 28px;
+      color: #2c3e50;
+      margin-bottom: 25px;
+      border-bottom: 2px solid #005a9c;
+      padding-bottom: 10px;
+    }
+
+    .section {
+      margin-bottom: 20px;
+    }
+
+    .section h3 {
+      font-size: 20px;
+      color: #005a9c;
+      margin: 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-content {
+      display: none;
+      margin-top: 10px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    ul li {
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    ul li::before {
+      content: "•";
+      color: #005a9c;
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+
+    a {
+      color: #0077cc;
+      text-decoration: none;
+      transition: color 0.2s ease-in-out;
+    }
+
+    a:hover {
+      color: #005a9c;
+      text-decoration: underline;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 18px;
+      margin-right: 10px;
+      border-radius: 6px;
+      background-color: #005a9c;
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background-color 0.2s ease-in-out;
+    }
+
+    .button:hover {
+      background-color: #81bbea;
+    }
+
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 24px;
+      }
+
+      .section h3 {
+        font-size: 18px;
+      }
+
+      .button {
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+    }
+
+    .toggle-icon {
+      font-size: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .active .toggle-icon {
+      transform: rotate(90deg);
+    }
+
+    .active .section-content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<section id="annonces-admin">
+  <h2>Annonces – Espace Administratif</h2>
+
+  <div class="section">
+    <h3 onclick="toggleSection(this)">📅 Dates importantes <span class="toggle-icon">▶</span></h3>
+    <div class="section-content">
+      <ul>
+        <li>Dépôt des dossiers de stage : <strong>15 mai 2025</strong></li>
+        <li>Inscriptions semestre 1 : <strong>1er septembre 2025</strong></li>
+        <li>Soutenances : <strong>10 au 25 Mai 2025</strong></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 onclick="toggleSection(this)">🔁 Changements administratifs <span class="toggle-icon">▶</span></h3>
+    <div class="section-content">
+      <ul>
+        <li><a href="https://example.com/documents/reglement-interieur-2025.pdf" target="_blank">Nouveau règlement intérieur (PDF)</a></li>
+        <li><a href="https://example.com/attestation-scolarite.html" target="_blank">Procédure pour attestation de scolarité</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 onclick="toggleSection(this)">👥 Réunions et permanences <span class="toggle-icon">▶</span></h3>
+    <div class="section-content">
+      <ul>
+        <li>Permanence scolarité : <strong>mardi 10h–12h, bureau B204</strong></li>
+        <li><a href="https://example.com/reunions/mobilite-internationale" target="_blank">Réunion mobilité internationale – 6 mai à 14h</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 onclick="toggleSection(this)">📝 Formulaires & Démarches <span class="toggle-icon">▶</span></h3>
+    <div class="section-content">
+      <ul>
+        <li><a href="https://example.com/formulaires/convention-stage.pdf" target="_blank">Télécharger la convention de stage (PDF)</a></li>
+        <li><a href="https://example.com/equivalences-ue.html" target="_blank">Démarche pour validation des UE</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="section">
+    <h3 onclick="toggleSection(this)">📌 Divers <span class="toggle-icon">▶</span></h3>
+    <div class="section-content">
+      <ul>
+        <li><a href="https://ent.univ-example.fr/rapports" target="_blank">Plateforme de dépôt des rapports</a></li>
+        <li><a href="https://etudiant.gouv.fr/fr/aides-financieres/bourses" target="_blank">Campagne de bourses (jusqu'au 30 juin 2025)</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="buttons">
+    <a href="https://example.com/documents" class="button">📁 Voir tous les documents</a>
+    <a href="https://www.ensit.tn/" class="button" style="background-color: #28A745;">📧 Contacter la scolarité</a>
+  </div>
+</section>
+
+<script>
+  function toggleSection(header) {
+    const section = header.parentElement;
+    section.classList.toggle("active");
+  }
+</script>
+
+</body>
+</html>

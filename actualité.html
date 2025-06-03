@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Actualités - Département de Mathématiques</title>
+    <style>
+        /* Style général */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #f5f9ff;
+            overflow-x: hidden;
+        }
+        
+        /* En-tête */
+        header {
+            background: linear-gradient(135deg, #0a1a4a, #0d47a1);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        header p {
+            margin: 0.5rem 0 0;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #0d47a1;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        nav li {
+            margin: 0rem;
+            margin-right: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            margin-top: 2vh;
+            font-weight: lighter;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Contenu principal */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        /* Sections */
+        .section-title {
+            color: #0a1a4a;
+            border-bottom: 2px solid #0d47a1;
+            padding-bottom: 0.5rem;
+            margin-top: 2rem;
+            font-size: 1.8rem;
+        }
+        
+        /* Grille commune à toutes les sections */
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        /* Carte commune à tous les éléments */
+        .content-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Zone supérieure colorée */
+        .card-header {
+            height: 120px;
+            background-color: #0a1a4a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            padding: 0 1rem;
+            text-align: center;
+            line-height: 1.4;
+        }
+        
+        /* Contenu de la carte */
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-date {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-title {
+            color: #0a1a4a;
+            margin: 0 0 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .card-excerpt {
+            margin-bottom: 1rem;
+            color: #495057;
+            line-height: 1.5;
+        }
+        
+        .card-full-content {
+            display: none;
+            margin-top: 1rem;
+            color: #495057;
+            line-height: 1.5;
+        }
+        
+        .read-more {
+            color: #0d47a1;
+            text-decoration: none;
+            font-weight: 500;
+            display: inline-block;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+        
+        .read-more:hover {
+            color: #0a1a4a;
+            text-decoration: underline;
+        }
+        
+        /* Styles spécifiques pour les événements */
+        .event-time {
+            font-weight: bold;
+            color: #0a1a4a;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Styles spécifiques pour les annonces */
+        .annonce-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .annonce-images img {
+            max-width: 100%;
+            max-height: 150px;
+            object-fit: contain;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: transform 0.3s;
+        }
+        
+        .annonce-images img:hover {
+            transform: scale(1.03);
+        }
+        
+        /* Footer */
+        footer {
+            animation: slideUp 1s ease-out forwards;
+            height: 0vh;
+        }
+        
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .footer-content {
+            background-color: #0a1a4a;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 0%;
+            margin-top: 60vh;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            margin-top: 8vh;
+            color: #4da6ff;
+            text-align: left;
+            margin-left: 5vh;
+        }
+        
+        .footer-section p, .footer-section li {
+            margin-bottom: 0.8rem;
+            margin-left: 5vh;
+            color: #ddd;
+            text-align: left;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section a {
+            color: #cce0ff;
+            text-decoration: none;
+            transition: color 0.3s;
+            margin-left: 5vh;
+            font-size: 1.3rem;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(245, 242, 242, 0.1);
+            margin-top: -18vh;
+            color: antiquewhite;
+            font-size: 1.5rem;
+            background-color: #0a1a4a;
+        }
+        
+        .footer-section {
+            margin-top: -50vh;
+            background-color: #0a1a4a;
+            width: 108%;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .card-header {
+                height: auto;
+                padding: 1rem;
+            }
+        }
+        
+        #search-bar {
+            margin-top: -6vh;
+            text-align: center;
+            position: absolute;
+            right: 20px;
+        }
+        
+        #search-bar input {
+            padding: 8px;
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        #search-bar button {
+            padding: 8px 12px;
+            background-color: #0d47a1;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        #search-bar button:hover {
+            background-color: #0a1a4a;
+        }
+        
+        .suggestion-box {
+            border: 1px solid #ccc;
+            max-height: 150px;
+            overflow-y: auto;
+            position: absolute;
+            background-color: white;
+            width: 200px;
+            display: none;
+            z-index: 10;
+        }
+        
+        .suggestion-box div {
+            padding: 8px;
+            cursor: pointer;
+        }
+        
+        .suggestion-box div:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .dropdown {
+            text-align: center;
+            margin-top: 0vh;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        
+        .dropdown-content a:hover {
+            background-color: #708a96;
+            color: white;
+        }
+        
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        
+        .navbar li a, .dropbtn {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            margin-top: 0vh;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Département de Mathématiques</h1>
+        <p>Actualités et nouveautés</p>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="up1.html">Accueil</a></li>
+            <li class="dropdown">
+                <a href="#" class="dropbtn">Formation</a>
+                <div class="dropdown-content">
+                    <a href="master.html">Formation master en Mathématiques</a>
+                    <a href="ingénieur.html">Formation Ingénieur en Mathématiques</a>
+                </div>
+            </li>
+            <li><a href="departement.html">département</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div id="search-bar">
+            <input type="text" id="search-input" placeholder="Rechercher une page...">
+            <button onclick="searchPage()">Rechercher 🔍</button>
+            <div id="suggestions" class="suggestion-box"></div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <h2 class="section-title">Dernières actualités</h2>
+        
+        <div class="section-grid">
+            <!-- Actualité 1 -->
+            <div class="content-card">
+                <div class="card-header">Colloque international sur les équations différentielles</div>
+                <div class="card-content">
+                    <div class="card-date">1 novembre 2025</div>
+                    <p class="card-excerpt">Notre département accueillera du 12 au 14 novembre le colloque annuel sur les avancées en équations différentielles...</p>
+                    <div class="card-full-content">
+                        <p>Le colloque international sur les équations différentielles réunira des experts du monde entier pour discuter des dernières avancées dans ce domaine fondamental des mathématiques. Les sessions couvriront des sujets tels que les systèmes dynamiques, les équations aux dérivées partielles et leurs applications en physique et en ingénierie.</p>
+                        <p>Les étudiants sont encouragés à participer aux sessions de posters pour présenter leurs travaux de recherche.</p>
+                    </div>
+                    <span class="read-more" onclick="toggleReadMore(this)">Lire plus →</span>
+                </div>
+            </div>
+            
+            <!-- Actualité 2 -->
+            <div class="content-card">
+                <div class="card-header">Nouveau master de recherche en data science</div>
+                <div class="card-content">
+                    <div class="card-date">10 janvier 2026</div>
+                    <p class="card-excerpt">Bonne Année! Le département proposera un nouveau master spécialisé en science des données...</p>
+                    <div class="card-full-content">
+                        <p>À partir de la rentrée 2026, le département de mathématiques proposera un nouveau master en science des données. Ce programme interdisciplinaire combinera des cours avancés en statistiques, apprentissage automatique et traitement des données massives.</p>
+                        <p>Plusieurs entreprises partenaires offriront des stages et des opportunités d'emploi aux étudiants du programme.</p>
+                    </div>
+                    <span class="read-more" onclick="toggleReadMore(this)">Lire plus →</span>
+                </div>
+            </div>
+            
+            <!-- Actualité 3 -->
+            <div class="content-card">
+                <div class="card-header">Prix d'excellence pour le Pr. Dupont</div>
+                <div class="card-content">
+                    <div class="card-date">2 février 2026</div>
+                    <p class="card-excerpt">Le professeur Dupont a reçu le prix Lagrange pour ses travaux révolutionnaires en topologie algébrique...</p>
+                    <div class="card-full-content">
+                        <p>Le professeur Jean Dupont du département de mathématiques a été honoré du prestigieux prix Lagrange pour ses contributions majeures en topologie algébrique. Ses travaux sur les invariants topologiques ont ouvert de nouvelles voies de recherche avec des applications potentielles en physique théorique.</p>
+                        <p>La cérémonie de remise des prix a eu lieu à Paris en présence de la communauté mathématique internationale.</p>
+                    </div>
+                    <span class="read-more" onclick="toggleReadMore(this)">Lire plus →</span>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Événements à venir</h2>
+        
+        <div class="section-grid">
+            <!-- Événement 1 -->
+            <div class="content-card">
+                <div class="card-header">Ouverture: "Nouvelles perspectives"</div>
+                <div class="card-content">
+                    <div class="card-date">1 Septembre 2025</div>
+                    <div class="event-time">13h00</div>
+                    <p class="card-excerpt">Cérémonie d'ouverture de l'année académique avec le directeur du département...</p>
+                    <div class="card-full-content">
+                        <p>La cérémonie d'ouverture se tiendra dans le Bloc A avec une allocution du directeur Hassene Sedik sur les nouvelles orientations du département pour l'année à venir.</p>
+                        <p>Tous les étudiants et membres du personnel sont invités à participer à cet événement marquant le début de l'année académique.</p>
+                    </div>
+                    <span class="read-more" onclick="toggleReadMore(this)">Lire plus →</span>
+                </div>
+            </div>
+            
+            <!-- Événement 2 -->
+            <div class="content-card">
+                <div class="card-header">Journée portes ouvertes</div>
+                <div class="card-content">
+                    <div class="card-date">15 Janvier 2026</div>
+                    <div class="event-time">8h00</div>
+                    <p class="card-excerpt">Découvrez nos formations et rencontrez nos enseignants-chercheurs...</p>
+                    <div class="card-full-content">
+                        <p>Cette journée portes ouvertes est l'occasion idéale pour les futurs étudiants de découvrir nos programmes de formation, nos installations et de rencontrer nos enseignants-chercheurs.</p>
+                        <p>Au programme : visites guidées, présentations des formations, rencontres avec les étudiants actuels et démonstrations de projets de recherche.</p>
+                    </div>
+                    <span class="read-more" onclick="toggleReadMore(this)">Lire plus →</span>
+                </div>
+            </div>
+            
+            <!-- Événement 3 -->
+            <div class="content-card">
+                <div class="card-header">Concours de mathématiques</div>
+                <div class="card-content">
+                    <div class="card-date">30 février 2026</div>
+                    <div class="event-time">Toute la journée</div>
+                    <p class="card-excerpt">Inscriptions ouvertes jusqu'au 25 février pour les étudiants de licence...</p>
+                    <div class="card-full-content">
+                        <p>Le concours de mathématiques inter-universités est ouvert à tous les étudiants de licence en mathématiques ainsi qu'aux étudiants ingénieurs.</p>
+                        <p>Les épreuves porteront sur différents domaines des mathématiques et les meilleurs participants recevront des prix et des opportunités de stages.</p>
+                    </div>
+                    <span class="read-more" onclick="toggleReadMore(this)">Lire plus →</span>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="section-title">Annonces importantes</h2>
+        
+        <div class="section-grid">
+            <!-- Annonce 1 -->
+            <div class="content-card">
+                <div class="card-header">Formation SOLIDWORKS</div>
+                <div class="card-content">
+                    <div class="card-date">20 Avril 2025</div>
+                    <p class="card-excerpt">Formation 100% gratuite pour les étudiants de l'ENSIT avec certifications...</p>
+                    <div class="card-full-content">
+                        <p>Le centre 4C de l'ENSIT propose une formation certifiante en SolidWorks, totalement gratuite, en partenariat avec le centre agréé HLC Tech.</p>
+                        <p>Objectif : Obtenir jusqu'à 12 certifications professionnelles selon votre spécialité. Date limite d'inscription : 25 Avril 2025.</p>
+                        <div class="annonce-images">
+                            <img src="solidw.jpg" alt="Affiche SolidWorks">
+                            <img src="solidw1.JPG" alt="Détails formation">
+                        </div>
+                    </div>
+                    <span class="read-more" onclick="toggleReadMore(this)">Lire plus →</span>
+                </div>
+            </div>
+            
+            <!-- Annonce 2 -->
+            <div class="content-card">
+                <div class="card-header">Changement de professeur</div>
+                <div class="card-content">
+                    <div class="card-date">25 Août 2025</div>
+                    <p class="card-excerpt">Modification dans l'équipe enseignante pour la 1ère année...</p>
+                    <div class="card-full-content">
+                        <p>À partir du 1 septembre, un changement intervient dans l'équipe enseignante pour la classe de 1ère année génie mathématique appliquées et modélisation.</p>
+                        <p>Nous remercions chaleureusement Mr Fathi Abcha pour son enseignement et l'accueillons son successeur.</p>
+                    </div>
+                    <span class="read-more" onclick="toggleReadMore(this)">Lire plus →</span>
+                </div>
+            </div>
+            
+            <!-- Annonce 3 -->
+            <div class="content-card">
+                <div class="card-header">Recrutement moniteur</div>
+                <div class="card-content">
+                    <div class="card-date">15 Octobre 2025</div>
+                    <p class="card-excerpt">Le département recrute un moniteur pour 10h/semaine...</p>
+                    <div class="card-full-content">
+                        <p>Le département de mathématiques recherche un moniteur pour assister les enseignants dans leurs cours et travaux pratiques.</p>
+                        <p>Mission de 10 heures par semaine. Candidatures (CV + lettre de motivation) à envoyer avant le 22 octobre à l'adresse du département.</p>
+                    </div>
+                    <span class="read-more" onclick="toggleReadMore(this)">Lire plus →</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contacts</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Adresse: Montfleury Avenue Taha Hussein,1008</p>
+                <p><i class="fas fa-phone"></i> Téléphone: +216 71 391 166</p>
+                <p><i class="fas fa-envelope"></i> Departement_math@ensit.rnu.tn</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="actualité.html">Actualités</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="departement.html">À-propos de Département</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Réseaux sociaux</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 Département de Mathématiques - Tous droits réservés</p>
+        </div> 
+    </footer>
+    
+    <script>
+        // Fonction pour "Lire plus/Lire moins"
+        function toggleReadMore(element) {
+            const card = element.closest('.card-content');
+            const fullContent = card.querySelector('.card-full-content');
+            const excerpt = card.querySelector('.card-excerpt');
+            
+            if (fullContent.style.display === 'block') {
+                fullContent.style.display = 'none';
+                excerpt.style.display = 'block';
+                element.textContent = 'Lire plus →';
+            } else {
+                fullContent.style.display = 'block';
+                excerpt.style.display = 'none';
+                element.textContent = 'Lire moins ←';
+            }
+        }
+        
+        // Fonction de recherche
+        document.getElementById("search-input").addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                searchPage();
+            }
+        });
+        
+        function searchPage() {
+            const input = document.getElementById("search-input").value.toLowerCase();
+            
+            const pages = {
+                "accueil": "up1.html",
+                "contact": "contact.html",
+                "espace etudient": "E-etudient.html",
+                "actualité": "actualité.html",
+                "formation ingenieur": "ingénieur.html"
+            };
+            
+            if (pages[input]) {
+                window.location.href = pages[input];
+            } else {
+                alert("Page non trouvée. Essayez: accueil, contact, espace etudient, formation ingenieur...");
+            }
+        }
+        
+        const searchPages = {
+            "accueil": "up1.html",
+            "contact": "contact.html",
+            "espace etudient": "E-etudient.html",
+            "actualité": "actualité.html",
+            "formation en master mathématiques": "master.html"
+        };
+        
+        const searchInput = document.getElementById("search-input");
+        const suggestionsBox = document.getElementById("suggestions");
+        
+        searchInput.addEventListener("input", function() {
+            const input = searchInput.value.toLowerCase();
+            suggestionsBox.innerHTML = "";
+            if (!input) {
+                suggestionsBox.style.display = "none";
+                return;
+            }
+            
+            const matchingPages = Object.keys(searchPages).filter(page => page.startsWith(input));
+            
+            if (matchingPages.length > 0) {
+                suggestionsBox.style.display = "block";
+                matchingPages.forEach(page => {
+                    const suggestion = document.createElement("div");
+                    suggestion.textContent = page;
+                    suggestion.onclick = () => {
+                        window.location.href = searchPages[page];
+                    };
+                    suggestionsBox.appendChild(suggestion);
+                });
+            } else {
+                suggestionsBox.style.display = "none";
+            }
+        });
+        
+        searchInput.addEventListener("keydown", function(event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                const input = searchInput.value.toLowerCase();
+                if (searchPages[input]) {
+                    window.location.href = searchPages[input];
+                } else {
+                    alert("Page non trouvée !");
+                }
+            }
+        });
+        
+        window.addEventListener('wheel', function(e) {
+            window.scrollBy(0, e.deltaY * 1.1);
+        });
+    </script>
+</body>
+</html>

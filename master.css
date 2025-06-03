@@ -1,0 +1,190 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    overflow-x: hidden;
+}
+
+header {
+    background: linear-gradient(135deg, #1a3a8f, #0d6efd);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    
+   
+}
+
+header h1 {
+    margin: 0;
+}
+nav{
+    background-color: #0d6efd;
+    align-items: center;
+    text-align: center;
+    justify-content:  center;
+    height: 8vh;
+    display: flex;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 15px;
+  
+}
+
+nav ul li a {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    font-weight: lighter;
+    align-items: center;
+ justify-content: center;
+   
+}
+nav ul li a:hover{
+    color:aquamarine
+    
+
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    color: #007BFF;
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 5px;
+}
+
+
+footer {
+    
+    animation: slideUp 1s ease-out forwards;
+   min-height: fit-content ;
+    
+ 
+    
+    
+  
+     
+}
+@keyframes slideUp {
+    from {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+.footer-content {
+
+    background-color: #0066cc;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 0%;
+    margin-top: 50vh;
+ 
+   
+   
+   
+}
+
+.footer-section h3 {
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+    margin-top: 8vh;
+    color: #4da6ff;
+   text-align: left;
+   margin-left: 5vh;
+}
+
+.footer-section p, .footer-section li {
+    margin-bottom: 0.8rem;
+    margin-left: 5vh;
+    color: #ddd;
+    text-align: left;
+   
+}
+
+.footer-section a {
+    color: #cce0ff;
+    text-decoration: none;
+    transition: color 0.3s;
+    margin-left: 5vh;
+}
+
+.footer-section a:hover {
+    color: white;
+}
+
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(245, 242, 242, 0.1);
+    margin-top: -18vh;
+    color: antiquewhite;
+}
+.footer-section{
+   margin-top: -50vh;
+   background-color: #063763;
+   width: 108%;
+  
+}
+/* styles.css */
+img {
+    
+    border-radius: 4px;
+    padding: 5px;
+    margin-bottom: 20px;
+    position: relative;
+}
+img.mast{
+    position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('ton-image.jpg');
+      background-size: cover;
+      background-position: right;
+      opacity: 0.2; /* ajustable */
+      z-index: 1;
+      
+}
+
+ul {
+    list-style-type: square;
+    margin-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+.background-video{
+  
+    width: auto;
+   height: 83vh;
+   display:block;
+    margin: 0 auto;
+    margin-top: -2vh;
+   
+}
+

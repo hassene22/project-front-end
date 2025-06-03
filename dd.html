@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Espace Administratif - Département Mathématiques</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #2c3e50;
+      color: white;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .sidebar h2 { color: #ecf0f1; }
+    .sidebar a {
+      color: #bdc3c7;
+      padding: 10px;
+      text-decoration: none;
+      display: block;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+    .sidebar a.active, .sidebar a:hover {
+      background-color: #34495e;
+      color: white;
+    }
+    .content {
+      flex-grow: 1;
+      padding: 20px;
+      background-color: #ecf0f1;
+      overflow-y: auto;
+    }
+    .section { display: none; }
+    .section.active { display: block; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    input, textarea, select, button {
+      padding: 10px;
+      width: 100%;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button { background-color: #3498db; color: white; border: none; cursor: pointer; }
+    button:hover { background-color: #2980b9; }
+    
+  </style>
+</head>
+<body>
+
+  <nav class="sidebar">
+    <h2>Mon espace</h2>
+    <a href="#" class="active" onclick="showSection(event, 'dashboard')">📊 Dashboard</a>
+    <a href="#" onclick="showSection(event, 'annonces')">📢 Annonces</a>
+    <a href="#" onclick="showSection(event, 'pfas')">📁 PFAs</a>
+    <a href="#" onclick="showSection(event, 'documents')">📚 Documents & Formulaires</a>
+    <a href="#" onclick="showSection(event, 'calendrier')">🗓️ Calendrier</a>
+    <a href="#" onclick="showSection(event, 'dossier')">📝 Dossier étudiant</a>
+    <a href="#" onclick="showSection(event, 'depot')">📤 Dépôt de documents</a>
+    <a href="#" onclick="showSection(event, 'encadrement')">👨‍🏫 Encadrement</a>
+    <a href="#" onclick="showSection(event, 'messagerie')">💬 Messagerie</a>
+    <a href="#" onclick="showSection(event, 'notes')">📄 Relevés de notes</a>
+    <a href="#" onclick="showSection(event, 'mobilite')">🌍 Mobilité</a>
+    <a href="#" onclick="showSection(event, 'offres')">💼 Offres de stages</a>
+    <a href="#" onclick="showSection(event, 'compte')">🔒 Mon compte</a>
+  </nav>
+
+  <div class="content">
+    <div id="dashboard" class="section active">
+      <h1>Dashboard</h1>
+      <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+        <div style="background: white; padding: 20px; border-radius: 10px; flex: 1;">
+          <h3>📚 Étudiants inscrits</h3><p><strong>150</strong></p>
+        </div>
+        <div style="background: white; padding: 20px; border-radius: 10px; flex: 1;">
+          <h3>👨‍🏫 Encadrants disponibles</h3><p><strong>12</strong></p>
+        </div>
+        <div style="background: white; padding: 20px; border-radius: 10px; flex: 1;">
+          <h3>📁 PFAs en cours</h3><p><strong>37</strong></p>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+        <style>
+            body {
+                font-family: 'Segoe UI', Arial, sans-serif;
+                background: #f5f7fa;
+                margin: 0;
+                padding: 20px;
+                color: #333;
+            }
+            .dashboard {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .card {
+                background: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                transition: transform 0.3s;
+            }
+            .card:hover {
+                transform: translateY(-5px);
+            }
+            .card-header {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: 15px;
+                color: #2c3e50;
+                border-bottom: 1px solid #eee;
+                padding-bottom: 10px;
+            }
+            .chart-container {
+                height: 250px;
+                position: relative;
+            }
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            .animated {
+                animation: fadeIn 1s ease-in-out;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="dashboard">
+            <!-- Carte 1 : Effectifs Étudiants -->
+            <div class="card animated">
+                <div class="card-header">📊 Effectifs Étudiants</div>
+                <div class="chart-container">
+                    <canvas id="studentsChart"></canvas>
+                </div>
+            </div>
+    
+            <!-- Carte 2 : Diplômés et Personnel -->
+            <div class="card animated">
+                <div class="card-header">🎓 Diplômés / Personnel</div>
+                <div class="chart-container">
+                    <canvas id="staffChart"></canvas>
+                </div>
+            </div>
+    
+            <!-- Carte 3 : Répartition du Personnel -->
+            <div class="card animated">
+                <div class="card-header">👥 Répartition du Personnel</div>
+                <div class="chart-container">
+                    <canvas id="personnelChart"></canvas>
+                </div>
+            </div>
+    
+            <!-- Carte 4 MODIFIÉE : Structures & Départements (Graphique Radar) -->
+            <div class="card animated">
+                <div class="card-header">🏛 Structures & Départements</div>
+                <div class="chart-container">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+        </div>
+    
+        <script>
+            // Graphique 1 : Effectifs étudiants
+            const studentsCtx = document.getElementById('studentsChart').getContext('2d');
+            new Chart(studentsCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Élèves Ingénieurs', 'Mastériens', 'Doctorants'],
+                    datasets: [{
+                        label: 'Nombre',
+                        data: [930, 120, 250],
+                        backgroundColor: ['#3498db', '#2ecc71', '#e74c3c'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    animation: { duration: 2000 },
+                    scales: { y: { beginAtZero: true } }
+                }
+            });
+    
+            // Graphique 2 : Personnel
+            const staffCtx = document.getElementById('staffChart').getContext('2d');
+            new Chart(staffCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Permanents', 'Contractuels', 'Vacataires'],
+                    datasets: [{
+                        data: [150, 8, 11],
+                        backgroundColor: ['#9b59b6', '#f39c12', '#1abc9c'],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    animation: { duration: 2000 }
+                }
+            });
+    
+            // Graphique 3 : Répartition personnel
+            const personnelCtx = document.getElementById('personnelChart').getContext('2d');
+            new Chart(personnelCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Corps A', 'Experts', 'Ingénieurs', 'Techniciens', 'Administratifs'],
+                    datasets: [{
+                        data: [32, 2, 2, 10, 42],
+                        backgroundColor: ['#3498db', '#e74c3c', '#f1c40f', '#2ecc71', '#9b59b6'],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    animation: { duration: 2000 }
+                }
+            });
+    
+            // NOUVEAU Graphique 4 : Radar pour Structures & Départements
+            const radarCtx = document.getElementById('radarChart').getContext('2d');
+            new Chart(radarCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Structures Recherche', 'Départements'],
+                    datasets: [{
+                        label: 'Valeurs comparées',
+                        data: [7, 6],
+                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                        borderColor: '#3498db',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#3498db',
+                        pointRadius: 5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    animation: { duration: 2000 },
+                    scales: {
+                        r: {
+                            angleLines: { display: true },
+                            suggestedMin: 0,
+                            suggestedMax: 10
+                        }
+                    }
+                }
+            });
+        </script>
+      </div>
+    </div>
+
+    <div id="annonces" class="section">
+      <h1>📢 Gestion des annonces</h1>
+      <form onsubmit="event.preventDefault(); alert('Annonce publiée !');">
+        <label for="titreAnnonce"><strong>Titre :</strong></label><br>
+        <input type="text" id="titreAnnonce" placeholder="Titre de l’annonce" style="width: 100%; padding: 10px;"><br><br>
+    
+        <label for="contenuAnnonce"><strong>Contenu :</strong></label><br>
+        <textarea id="contenuAnnonce" rows="5" placeholder="Contenu de l’annonce..." style="width: 100%; padding: 10px;"></textarea><br><br>
+    
+        <button type="submit" style="padding: 10px 20px;">Publier</button>
+      </form>
+    
+     
+    
+      <h2>Annonces récentes</h2>
+      <ul>
+        <li><strong>📆 30 mai 2025</strong> – Date limite pour les inscriptions aux stages PFA</li>
+        <li><strong>📣 15 mai 2025</strong> – Conférence internationale sur les modèles mathématiques</li>
+      </ul>
+    </div>
+
+    <div id="pfas" class="section" >
+      <h1>📁 Gestion des PFAs</h1>
+      <table border="1" width="100%" cellpadding="10" style="border-collapse: collapse; background: white;">
+        <thead>
+          <tr>
+            <th>N°</th>
+            <th>Sujet</th>
+            <th>Encadrant</th>
+            <th>État</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Liste complète des sujets de la 2e image -->
+          <tr><td>1</td><td>Modeling of systems with « As good As New » Strategies</td><td>S. KASMI</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>2</td><td>Skin type detection and care recommendation application</td><td>S. KASMI</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>3</td><td>Développement d’un site web interactif pour les diagnostics d’anxiété</td><td>S. KASMI</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>4</td><td>Résolution numérique d’équations différentielles ordinaires (EDO)</td><td>M. BERZIG</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>5</td><td>Application des méthodes d’analyse financière dans le secteur bancaire</td><td>S. KASMI</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>6</td><td>Module « gestion des départements et des étudiants »</td><td>H.B. REGAYA</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>7</td><td>Module « gestion des plans d’études et modules »</td><td>H.B. REGAYA</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>8</td><td>Module « gestion des notes, moyennes et résultats »</td><td>H.B. REGAYA</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>9</td><td>Module « synthèse des données et statistiques » (desktop)</td><td>H.B. REGAYA</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>10</td><td>Module « gestion des évènements » (mobile)</td><td>H.B. REGAYA</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>11</td><td>Module « gestion des évènements » (desktop)</td><td>H.B. REGAYA</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>12</td><td>Module « synthèse des données et statistiques » (mobile)</td><td>H.B. REGAYA</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>13</td><td>Partie FRONTALE avec HTML, CSS</td><td>H.B. REGAYA</td><td>En cours</td><td><button>Voir</button></td></tr>
+    
+          <!-- Liste de la 1ère image -->
+          <tr><td>14</td><td>Intégration de l’animation web avec JavaScript</td><td>H. BERGAYA</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>15</td><td>Application de gestion d’une médiathèque (C)</td><td>H. BERGAYA</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>16</td><td>Deep learning for image-based quality inspection</td><td>S. ABID</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>17</td><td>Mathematical modeling of traffic flow and congestion control</td><td>S. ABID</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>18</td><td>Numérisation et compression des signaux audio</td><td>B. MANSOURI</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>19</td><td>Reconnaissance vocale sur signal audio</td><td>B. MANSOURI</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>20</td><td>Extraction des paramètres du signal ECG</td><td>B. MANSOURI</td><td>En cours</td><td><button>Voir</button></td></tr>
+          <tr><td>21</td><td>Détection des anomalies cardiaques</td><td>B. MANSOURI</td><td>En cours</td><td><button>Voir</button></td></tr>
+        </tbody>
+      </table>
+    </div>
+    
+
+    <div id="documents" class="section">
+      <h1>📚 Documents & Formulaires</h1>
+      <input type="file">
+      <button>Téléverser</button>
+      <ul>
+        <li><a href="#">Formulaire de stage</a></li>
+        <li><a href="#">Charte du PFA</a></li>
+      </ul>
+    </div>
+
+    <div id="calendrier" class="section">
+      <h1>🗓️ Calendrier</h1>
+      <form>
+        <input type="text" placeholder="Nom de l’événement" required>
+        <input type="text" placeholder="Description">
+        <input type="date">
+        <button>Ajouter</button>
+      </form>
+      <ul>
+        <li>a partir de 15/05/2025 - Soutenance des PFAs</li>
+        <li>25/05/2025 - Clôture des notes</li>
+      </ul>
+    </div>
+
+    <div id="dossier" class="section">
+      <h1>📝 Dossier étudiant</h1>
+      <input type="text" placeholder="Matricule">
+      <button>Rechercher</button>
+      <p>Nom: ---<br>Classe: ---<br>Email: ---</p>
+    </div>
+
+    <div id="depot" class="section">
+      <h1>📤 Dépôt de documents</h1>
+      <form>
+        <input type="text" placeholder="Nom de l’étudiant">
+        <input type="file">
+        <button>Déposer</button>
+      </form>
+    </div>
+
+    <div id="encadrement" class="section" >
+      <h1>👨‍🏫 Encadrement</h1>
+      <form onsubmit="event.preventDefault(); alert('Affectation enregistrée !');" style="background: white; padding: 20px; border-radius: 10px;">
+        <label for="etudiant">Nom de l’étudiant :</label><br>
+        <input type="text" id="etudiant" name="etudiant" placeholder="Entrez le nom de l'étudiant" required><br><br>
+    
+        <label for="sujet">Titre du PFA :</label><br>
+        <input type="text" id="sujet" name="sujet" placeholder="Entrez le titre du PFA" required><br><br>
+    
+        <label for="encadrant">Encadrant :</label><br>
+        <select id="encadrant" name="encadrant" required>
+          <option value="" disabled>-- Choisir un encadrant -- </option>
+          <option>S. KASMI</option>
+          <option>M. BERZIG</option>
+          <option>H.B. REGAYA</option>
+          <option>H. BERGAYA</option>
+          <option>S. ABID</option>
+          <option>B. MANSOURI</option>
+        </select><br><br>
+    
+        <button type="submit">Affecter</button>
+      </form>
+    </div>
+    
+
+    <div id="messagerie" class="section" >
+      <h1>💬 Messagerie</h1>
+      <form onsubmit="event.preventDefault(); alert('Message envoyé !');" style="background: white; padding: 20px; border-radius: 10px;">
+        <label for="destinataire">Adresse e-mail du destinataire :</label><br>
+        <input
+          type="email"
+          id="destinataire"
+          name="destinataire"
+          placeholder="exemple@univ.dz"
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+          title="Veuillez entrer une adresse e-mail valide comme nom@domaine.com"
+          required
+        ><br><br>
+    
+        <label for="message">Message :</label><br>
+        <textarea id="message" name="message" placeholder="Écrivez votre message ici..." rows="5" required></textarea><br><br>
+    
+        <button type="submit">Envoyer</button>
+      </form>
+    </div>
+    <div id="notes" class="section">
+      <h1>📄 Relevés de notes</h1>
+      <a href="notes1gmam.html" style="color: #2980b9;"> 1ère GMAM</a><br>
+      <a href="#" style="color: #2980b9;"> 2ème GMAM</a><br>
+      <a href="#" style="color: #2980b9;"> 3ème GMAM</a>
+    </div>
+
+    
+
+    <div id="mobilite" class="section">
+      <h1>🌍 Mobilité</h1>
+      <ul>
+        <li>Université de Paris</li>
+        <li>Université de Canada</li>
+      </ul>
+      <form>
+        <label for="etudient">Nom et Prénom:</label>
+        <input type="text" placeholder="Nom et prénom de l’étudiant" required>
+        <label for="destinataire">Adresse e-mail  :</label><br>
+        <input
+          type="email"
+          id="destinataire"
+          name="destinataire"
+          placeholder="exemple@univ.dz"
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+          title="Veuillez entrer une adresse e-mail valide comme nom@domaine.com"
+          required>
+          <label for="tlf">Numéro de téléphone:</label>
+        <input type="text" placeholder="(+216)numéro de téléphone" required>
+        <select><option>Paris</option><option>Canada</option></select>
+        <button>Postuler</button>
+      </form>
+    </div>
+
+    <div id="offres" class="section">
+      <h1>💼 Offres de stages</h1>
+      
+      <!-- Interface Admin  -->
+      <div id="admin-panel"  margin-bottom: 20px; background: #f5f5f5; padding: 15px; border-radius: 5px;">
+        <h3>Administration des offres</h3>
+        <form id="offer-form">
+          <input type="text" id="offer-title" placeholder="Titre du stage" required style="padding: 8px; width: 40%;">
+          <input type="text" id="offer-duration" placeholder="Durée (ex: 3 mois)" required style="padding: 8px; width: 20%;">
+          <textarea id="offer-description" placeholder="Description détaillée" style="padding: 8px; width: 100%; margin: 10px 0;"></textarea>
+          <button type="submit" style="padding: 8px 15px; background: #4CAF50; color: white; border: none; border-radius: 4px;">Ajouter</button>
+        </form>
+      </div>
+    
+      <!-- Bouton Admin -->
+      <button id="toggle-admin" style="position: absolute; top: 20px; right: 20px; padding: 5px 10px; background: #333; color: white; border: none; border-radius: 3px;">Admin</button>
+    
+      <!-- Liste des offres -->
+      <div id="offers-list">
+        <!-- Chargé dynamiquement -->
+      </div>
+    </div>
+    
+    <script>
+    // Stockage (remplacer par base de données en production)
+    let offers = [
+      { id: 1, title: "Data Science", duration: "3 mois", description: "Analyse de données avancée" },
+      { id: 2, title: "Modélisation", duration: "2 mois", description: "Développement de modèles mathématiques" }
+    ];
+    
+    // DOM Elements
+    const adminPanel = document.getElementById('admin-panel');
+    const toggleBtn = document.getElementById('toggle-admin');
+    const offersList = document.getElementById('offers-list');
+    const offerForm = document.getElementById('offer-form');
+    
+    // Afficher/Masquer le panel admin
+    toggleBtn.addEventListener('click', () => {
+      adminPanel.style.display = adminPanel.style.display === 'none' ? 'block' : 'none';
+    });
+    
+    // Charger les offres
+    function loadOffers() {
+      offersList.innerHTML = offers.map(offer => `
+        <div class="offer-card" style="border: 1px solid #ddd; padding: 15px; margin-bottom: 10px; border-radius: 5px;">
+          <h3>${offer.title} - ${offer.duration}</h3>
+          <p>${offer.description}</p>
+          <div>
+            <button onclick="applyForOffer(${offer.id})" style="padding: 5px 10px; background: #2196F3; color: white; border: none; border-radius: 3px;">Postuler</button>
+            <button onclick="deleteOffer(${offer.id})" class="admin-only" style="padding: 5px 10px; background: #f44336; color: white; border: none; border-radius: 3px; margin-left: 10px;">Supprimer</button>
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    // Ajouter une offre
+    offerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const newOffer = {
+        id: Date.now(),
+        title: document.getElementById('offer-title').value,
+        duration: document.getElementById('offer-duration').value,
+        description: document.getElementById('offer-description').value
+      };
+      offers.push(newOffer);
+      loadOffers();
+      offerForm.reset();
+    });
+    
+    // Fonctions supplémentaires
+    function applyForOffer(id) {
+      alert(`Postulation pour l'offre ${id} envoyée!`);
+    }
+    
+    function deleteOffer(id) {
+      offers = offers.filter(offer => offer.id !== id);
+      loadOffers();
+    }
+    
+    // Initialisation
+    loadOffers();
+    </script>
+    
+    <style>
+    .admin-only { display: none; }
+    #admin-panel.active ~ #offers-list .admin-only { display: inline-block; }
+    </style>
+
+    <div id="compte" class="section">
+      <h1>🔒 Mon compte</h1>
+      <form>
+        <label for="etudient">Mon Compte:</label>
+        <input type="text" placeholder="Nom et prénom de l’étudiant" required>
+        <label for="destinataire">Adresse e-mail  :</label><br>
+        <input
+          type="email"
+          id="destinataire"
+          name="destinataire"
+          placeholder="nom.prénom@gmail.com"
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+          title="Veuillez entrer une adresse e-mail valide comme nom@domaine.com"
+          required>
+          <div class="password-field">
+            <label for="old-password">Ancien mot de passe</label>
+            <div class="input-group">
+              <input type="password" id="old-password" placeholder="Mot de passe" required>
+              <span class="toggle-password" onclick="togglePassword('old-password')"></span>
+            </div>
+          </div>
+          
+          <div class="password-field">
+            <label for="new-password">Nouveau mot de passe</label>
+            <div class="input-group">
+              <input type="password" id="new-password" placeholder="Nouveau mot de passe" required>
+              <span class="toggle-password" onclick="togglePassword('new-password')"></span>
+            </div>
+          </div>
+          
+          <div class="password-field">
+            <label for="confirm-password">Confirmer nouveau mot de passe</label>
+            <div class="input-group">
+              <input type="password" id="confirm-password" placeholder="Confirmer le nouveau mot de passe" required>
+              <span class="toggle-password" onclick="togglePassword('confirm-password')"></span>
+            </div>
+          </div>
+          
+          <script>
+          function togglePassword(id) {
+            const input = document.getElementById(id);
+            if (input.type === "password") {
+              input.type = "text";
+            } else {
+              input.type = "password";
+            }
+          }
+          </script>
+          
+          <style>
+          .password-field {
+            margin-bottom: 15px;
+          }
+          
+          .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+          }
+          
+          .input-group input {
+            width: 100%;
+            padding-right: 30px;
+          }
+          
+          .toggle-password {
+            position: absolute;
+            right: 10px;
+            cursor: pointer;
+            user-select: none;
+          }
+          </style>
+      <button>Valider</button></form>
+    </div>
+  </div>
+
+  <script>
+    function showSection(event, sectionId) {
+      event.preventDefault();
+      document.querySelectorAll('.sidebar a').forEach(link => link.classList.remove('active'));
+      event.target.classList.add('active');
+      document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+      document.getElementById(sectionId).classList.add('active');
+    }
+  </script>
+
+</body>
+</html>

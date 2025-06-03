@@ -1,0 +1,97 @@
+.image-container {
+    background-image: url('Poster-de-GMAM-1.jpg'); /* Remplacez par le chemin de votre image */
+    background-size: 100% auto; /* Couvre toute la largeur, la hauteur s'ajuste automatiquement */
+    background-position: top center; /* Aligne l'image en haut */
+    background-repeat: no-repeat; /* Empêche la répétition de l'image */
+    width: 108%; /* Prend toute la largeur de la page */
+    height: 279vh; /* Hauteur de l'image = 2x la hauteur de la fenêtre (car l'image est très haute) */
+    z-index:100 ;
+    position: relative;
+    margin-top: 20vh;
+    overflow-y: auto;
+}
+
+header {
+    
+  
+    
+    
+    margin-top: 0%;
+    height: 110px;
+    color: white;
+   background-repeat:no-repeat;
+
+    position: sticky;
+    transition: background-image 0.3s ease;
+    
+}
+
+.header-overlay {
+    
+    height: 10%;
+    transition: background-color 0.3s ease;
+}
+
+/* Navigation */
+nav { 
+    background-image: url('header111.png');
+    background-repeat: no-repeat;
+   
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    padding: 1.5rem 50%;
+    
+   position: fixed;
+   z-index: 1000;
+    
+  top: 0;
+  left: 0;
+  width: 100vh;
+  height: 100vh;
+  object-fit: cover;
+  object-position: top center;
+
+  
+ 
+ 
+  align-items: flex-start; /* aligne en haut */
+  justify-content: center; /* centre horizontalement */
+  padding-top: 8vh; /* petit espace du haut */
+   
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+   object-position: top center;
+   gap: 20px;
+}
+
+.nav-links li {
+    margin-left: 1rem;
+    position: relative;
+    z-index: 1000;
+    margin-top: -4vh;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+
+}
+
+.nav-links a:hover {
+    color: #4da6ff;
+}

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Département de Mathématiques</title>
+    <link rel="stylesheet" href="up1111.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<style>
+
+.background-section {
+    background-image: url('admin.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 155vh; /* hauteur de l'image */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    margin-top: 24vh;
+    width: 100%; 
+}
+.sun-icon {
+  animation: spin 6s linear infinite;
+  display: inline-block;
+  transform-origin: center;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+
+ 
+</style>
+
+<body>
+    <div class="background-section">
+       
+    </div>
+    <header>
+        <div class="header-overlay1">
+            <nav>
+                
+                
+                <ul class="nav-links">
+                    <li><a href="up1.html" >Accueil</a></li>    
+                    <li><a href="actualité.html" >Actualités</a></li>
+                    <li><a href="departement.html">Département</a></li>
+                    
+                    <li><a href="contact.html" >Contact</a></li>
+                </ul>   
+            </nav>
+        </div>
+        <div class="header-overlay">
+        
+                <nav>
+                    <ul>
+                      <li><a href="p.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                      <li><a href="mobirise.html"><i class="fa-solid fa-gears"></i> Gérer  </a></li>
+                      <li><a href="clubs.html"><i class="fas fa-users"></i>Clubs</a></li>
+                      <li><a href="pfa.html"><i class="fas fa-project-diagram"></i> PFA/PFE</a></li>
+                      <div class="dropdown"></div>
+                      <li class="dropdown">
+                        <a href="#" class="nav-link active" ><i class="fas fa-chevron-down"></i>Profile</a>
+                        <ul class="dropdown-menu">
+                          <li><a href="#" id="espace-admin-link">Mon Compte</a></li>
+                            <li><a href="E-etudient.html" id="espace-etudiant-link">Espace Étudiant</a></li>
+                            <li><a href="E-prof.html" id="espace-prof-link">Espace Professeur</a></li>
+                            
+                        </ul>
+                    </li>    
+                    </ul>
+                  </nav>          
+        </div>
+    </header>
+  
+     
+  </head>
+  <body>
+   <!-- Inclure Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+
+  
+<script src="up1111.js"></script>
+<footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <h3>Contacts</h3>
+            <p><i class="fas fa-map-marker-alt"></i> Adresse: Montfleury Avenue Taha Hussein,1008</p>
+            <p><i class="fas fa-phone"></i> Téléphone: +216 71 391 166</p>
+            <p><i class="fas fa-envelope"></i> Departement_math@ensit.rnu.tn</p>
+        </div>
+        <div class="footer-section">
+            <h3>Liens rapides</h3>
+            <ul>
+                <li><a href="actualité.html" >Actualités</a></li>
+                <li><a href="contact.html" >Contact</a></li>
+                <li><a href="departement.html" >Département</a></li>
+            </ul>
+        </div>
+        <div class="footer-section">
+            <h3>Réseaux sociaux</h3>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+        
+    </div>
+    <div class="footer-bottom">
+    <p>© 2025 Département de Mathématiques - Tous droits réservés</p></div> 
+</footer>  
+
+
+</body>
+</html>
+
+
+<script>
+   
+   document.addEventListener('DOMContentLoaded', function() {
+        const footer = document.querySelector('footer');
+        let lastValidScroll = 0;
+        let isBlocking = false;
+
+        function handleScroll() {
+            const footerRect = footer.getBoundingClientRect();
+            const currentScroll = window.scrollY;
+            
+            // Quand le haut du footer atteint le bas de la fenêtre
+            if (footerRect.top <= window.innerHeight && currentScroll > lastValidScroll) {
+                isBlocking = true;
+                window.scrollTo({
+                    top: lastValidScroll,
+                    behavior: 'auto'
+                });
+            } else {
+                isBlocking = false;
+                lastValidScroll = currentScroll;
+            }
+        }
+
+        window.addEventListener('scroll', handleScroll);
+        
+        // Bloquer aussi le scroll avec la molette
+        window.addEventListener('wheel', function(e) {
+            const footerRect = footer.getBoundingClientRect();
+            if (footerRect.top <= window.innerHeight && e.deltaY > 0 && isBlocking) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        // Recalculer lors du redimensionnement
+        window.addEventListener('resize', handleScroll);
+    });
+    
+</script>

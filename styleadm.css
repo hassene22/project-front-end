@@ -1,0 +1,402 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+header {
+    position: relative;
+    height: 60vh; /* 60% of viewport height */
+    width: 100%;
+    overflow: hidden;
+}
+
+.header-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('header.jpeg');
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.main{
+    background-image: url('background.png');
+    width: 100%;
+    background: linear-gradient(to top,rgba(0,0,0,0.5)50%,rgba(0,0,0,0.5)50%,url(1.jpg));
+    background-position: center;
+    background-size: cover;
+    height: 109vh;
+}
+.navbar{
+    width: 1200px;
+    height: 75px;
+    margin: auto;
+}
+.icon{ 
+    width: 200px;
+    float: left;
+    height: 70px;
+}
+.logo{
+    color: darkblue;
+    font-size: 35px;
+    font-family: Arial;
+    padding-left: 20px;
+    float: left;
+    padding-top: 10px;
+}
+.menu{
+    width: 400px;
+    float: left;
+    height: 70px;
+}
+ul{
+   float: left;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+ul li{
+    list-style: none;
+    margin-left: 62px;
+    margin-top:27px ;
+    font-size: 14px;
+
+}
+ul li a{
+    text-decoration: none;
+    color: aliceblue;
+    font-family: Arial;
+    font-weight: bold;
+    transition: 0.4s ease-in-out ;
+}
+ul li a:hover{
+    color:#0078d4;
+}
+
+
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    height: 100%;
+    
+}
+
+.contact-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: rgb(58, 118, 221);
+    display: flex;
+    justify-content: center;
+    padding: 10px ;
+}
+footer {
+    background-color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    position: relative;
+    bottom: -px; /* Adjust this value to move the footer */
+}
+
+.contact-bar a {
+    margin: 0 15px;
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    background-size: cover;
+}
+
+.contact-bar a.whatsapp {
+    background-image: url('whatsapp.png');
+}
+
+.contact-bar a.linkedin {
+    background-image: url('linkedin.png');
+}
+
+.contact-bar a.facebook {
+    background-image: url('facebook.png');
+}
+
+.contact-bar a.instagram {
+    background-image: url('instagram.png');
+}
+.contact-bar address {
+    font-style: normal;
+    color: #fff;
+
+  }
+  a {
+    color: #09e4f4; /* Change this to your preferred color */
+    text-decoration: none; /* Removes the underline */
+  }
+  
+  a:hover {
+    text-decoration: underline; /* Adds an underline when you hover over the link */
+  }
+  
+.form{
+    width: 250px;
+    height: 380px;
+    background: linear-gradient(to top,rgba(0,0,0,8)50%,rgba(0,0,0,8)50%);
+    position: absolute;
+    top: 200px;
+    left: 1100px;
+    border-radius: 10px;
+    padding: 25px;
+}
+body {
+    font-family: Arial, sans-serif;
+}
+/* styles.css */
+#inscrireButton {
+    position: absolute; /* Fixed position to keep it in place */
+    top: 35px;       /* Distance from the top */
+    right: 80px;     /* Distance from the right */
+    padding: 10px 20px; /* Padding for better appearance */
+    background-color: #007BFF; /* Background color */
+    color: white;    /* Text color */
+    border: none;    /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    font-size: 16px; /* Font size */
+}
+
+#inscrireButton:hover {
+    background-color: #0056b3; /* Darker background on hover */
+}
+
+.login-area {
+    display: none; /* Hide by default */
+    position: fixed;
+    top: 55px;
+    right: 10px;
+    width: 280px;
+    height: 500px;
+    padding: 20px;
+    background-color: #787878;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    
+}
+form h2{
+    width: 220px;
+    font-family: sans-serif;
+    text-align: center;
+    color: #0078d4;
+    font-size: 22px;
+    background-color:#fff;
+    border-radius: 10px;
+    margin: 2px;
+    padding: 8px;
+    margin-left: 23px;
+}
+form input{
+    width:260px ;
+    height: 35px;
+    background: transparent;
+    border-bottom: 1px solid #0078d4;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    color:#fff;
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-top: 30px;
+    font-family: sans-serif;
+}
+form input:focus{
+    outline: none;
+}
+::placeholder{
+    color: #fff;
+    font-family: Arial;
+}
+.btnn{
+     width: 240px;
+     height: 40px;
+     background: #0078d4;
+     border: none;
+     margin-top: 30px;
+     font-size: 22px;
+     border-radius: 10px;
+     cursor: pointer;
+     color: #fff;
+     transition: 0.4s ease;
+     margin-left: 23px;
+}
+.btnn:hover{
+    /*background: #fff;*/
+    color: #fff;
+   
+}
+.btnn a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+.Lien{
+    font-family: Arial, Helvetica, sans-serif;
+    padding-top: 20px;
+    text-align: center;
+    position: relative;/* Positions the element relative to the nearest positioned ancestor */
+    /* Adjust the distance from the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center horizontally */
+    font-size: 17px; /* Adjust the font size if needed */
+    color:#fff; /* Adjust the text color if needed */
+    
+}
+.Lien a{
+    text-decoration: none;
+    color: #0078d4;
+    padding-top: 100px;
+
+    
+    
+}
+.liw{
+    padding-top: 130px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: blanchedalmond;
+}
+
+.icons a{
+    text-decoration: none;
+    color: #fff;
+}
+.fab {
+    font-size: 35px; /* Adjust the size as needed */
+    color: #3b5998;
+    text-decoration: none; /* Facebook's brand color */
+    margin-right: 10px; /* Adjust spacing if needed */
+    /*margin-top: 50px;*/
+}
+.login-bar a {
+    margin-right: 10px; /* Adjust spacing if needed */
+}
+.fa-instagram {
+    background: -webkit-linear-gradient( #23744e, #85154d, #087943,#b81111);
+    -webkit-text-fill-color: transparent;
+}
+
+.fa-whatsapp {
+    color: #25D366; /* WhatsApp's brand color */
+}
+.fa-linkedin {
+    color: #0077B5; /* LinkedIn's brand color */
+}
+.fa-google{
+    background: -webkit-linear-gradient( #f51905, #d3750a, #087943,#07337b);
+    -webkit-text-fill-color: transparent;
+}
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #444;
+    list-style-type: none;
+    min-width: 160px;
+    z-index: 1;
+}
+.dropdown-menu li a {
+    padding: 10px;
+    display: block;
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #666;
+}
+
+/* Show dropdown menu on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+@media (max-width: 768px) {
+    .nav-list {
+        flex-direction: column;
+    }
+
+    .dropdown-menu {
+        position: static;
+    }
+}
+
+.video-container {
+    position: fixed; /* Use absolute positioning for precise placement */
+    top: 410px; /* Adjust this value to position the video vertically */
+    left: 11%; /* Center the video horizontally */
+   transform: translateX(-50%); /* Adjust for exact horizontal centering */
+   width: 300px; /* Set the width of the video container */
+   height: 220px; /* Set the height of the video container */
+    /* Optional: Add a border for styling */
+  z-index: 1;
+    /* box-shadow: 0 4px 8px rgba(24, 3, 75, 0.3);/* Optional: Add a shadow for styling */ 
+}
+
+/* Video Styling */
+#animation-video {
+    width: 118%;
+    height: 120%;
+    object-fit: cover; /* Ensures the video covers the container */
+
+}
+.background-container {
+    position: relative; /* Ensures child elements are positioned relative to this container */
+    background-repeat: no-repeat;
+    width: 100%; /* Adjust as needed */
+    height: 100vh; /* Full viewport height or adjust as needed */
+    overflow: auto; /* Prevents scrolling issues */
+  }
+  
+  .background-image {
+    width: 100%; /* Ensures the image covers the container */
+    height: 100%; /* Ensures the image covers the container */
+    object-fit: cover; /* Ensures the image covers the container without distortion */
+  }
+  
+  .dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+.dropdown-content a:hover {
+    background-color: #0d6a86;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.navbar li a, .dropbtn {
+    display: inline-block;
+    color: rgb(164, 187, 238);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+

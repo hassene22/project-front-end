@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Notes - Admin</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --light-color: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background-color: #f5f7fa;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .institution {
+            text-align: left;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .info-item {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-success {
+            background: #2ecc71;
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #e74c3c;
+            color: white;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            font-size: 14px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 500;
+            position: sticky;
+            top: 0;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .footer {
+            margin-top: 30px;
+            text-align: right;
+            font-style: italic;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+        }
+        
+        .passed {
+            background-color: #e8f5e9;
+        }
+        
+        .failed {
+            background-color: #ffebee;
+        }
+        
+        .scroll-container {
+            overflow-x: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            width: 80%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .modal-title {
+            margin: 0;
+            color: var(--primary-color);
+        }
+        
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #777;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        .editable {
+            background-color: #fffde7;
+            transition: background-color 0.3s;
+        }
+        
+        .editable:focus {
+            background-color: white;
+            outline: 2px solid var(--secondary-color);
+        }
+        
+        .admin-controls {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .admin-section {
+            margin-bottom: 30px;
+        }
+        
+        .admin-section h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .subject-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .subject-item {
+            background-color: #e9ecef;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .remove-subject {
+            color: #dc3545;
+            cursor: pointer;
+        }
+        
+        .backup-section {
+            margin-top: 30px;
+            padding: 20px;
+            background-color: #f1f8fe;
+            border-radius: 8px;
+        }
+        
+        @media print {
+            body {
+                padding: 0;
+                background-color: white;
+            }
+            
+            .actions, .admin-controls, .backup-section {
+                display: none;
+            }
+            
+            table {
+                box-shadow: none;
+            }
+        }
+        
+        @media (max-width: 1200px) {
+            .info-section {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .info-item {
+                text-align: left;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-controls">
+        <h2>Configuration Administrative</h2>
+        
+        <div class="form-group">
+            <label for="institution-name">Nom de l'institution</label>
+            <input type="text" class="form-control" id="institution-name" value="École Nationale Supérieure d'Ingénieur de Tunis">
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="formation-name">Formation</label>
+                <input type="text" class="form-control" id="formation-name" value="Formation d'Ingénieurs en Mathématiques appliquées et Modélisation">
+            </div>
+            <div class="form-group">
+                <label for="class-name">Classe</label>
+                <input type="text" class="form-control" id="class-name" value="GMAM1">
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="academic-year">Année universitaire</label>
+                <input type="text" class="form-control" id="academic-year" value="2024-2025">
+            </div>
+            <div class="form-group">
+                <label for="semester">Semestre</label>
+                <select class="form-control" id="semester">
+                    <option value="1" selected>Semestre 1</option>
+                    <option value="2">Semestre 2</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="jury-president">Président du Jury</label>
+                <input type="text" class="form-control" id="jury-president" value="Sofiane KASMI">
+            </div>
+            <div class="form-group">
+                <label for="publication-date">Date de publication</label>
+                <input type="date" class="form-control" id="publication-date" value="2025-02-17">
+            </div>
+        </div>
+        
+        <button class="btn btn-primary" id="update-header-btn">
+            <i class="fas fa-save"></i> Mettre à jour l'en-tête
+        </button>
+    </div>
+    
+    <div class="institution" id="institution-header">
+        <p>République Tunisienne<br>
+        Ministère de l'Enseignement Supérieur et de la Recherche Scientifique<br>
+        Université de Tunis<br>
+        École Nationale Supérieure d'Ingénieur de Tunis</p>
+    </div>
+    
+    <div class="header" id="main-header">
+        <h1>Relevé de Notes - Semestre 1</h1>
+        <p>Formation d'Ingénieurs en Mathématiques appliquées et Modélisation<br>
+        Classe: GMAM1 | Année universitaire: 2024-2025</p>
+    </div>
+    
+    <div class="info-section">
+        <div class="info-item">
+            <strong>Nombre d'étudiants:</strong> <span id="student-count">24</span>
+        </div>
+        <div class="info-item">
+            <strong>Moyenne de classe:</strong> <span id="class-average">12.15</span>
+        </div>
+        <div class="info-item">
+            <strong>Meilleure moyenne:</strong> <span id="best-average">13.93 (Étudiant 2024334)</span>
+        </div>
+        <div class="info-item">
+            <strong>Taux de réussite:</strong> <span id="success-rate">87.5%</span>
+        </div>
+    </div>
+    
+    <div class="admin-section">
+        <h2>Gestion des Matières</h2>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="new-subject-name">Nom de la matière</label>
+                <input type="text" class="form-control" id="new-subject-name" placeholder="Ex: Analyse Numérique">
+            </div>
+            <div class="form-group">
+                <label for="new-subject-coef">Coefficient</label>
+                <input type="number" class="form-control" id="new-subject-coef" min="0.5" step="0.5" value="1">
+            </div>
+            <div class="form-group">
+                <label for="new-subject-abbr">Abréviation</label>
+                <input type="text" class="form-control" id="new-subject-abbr" placeholder="Ex: ANum">
+            </div>
+        </div>
+        
+        <button class="btn btn-success" id="add-subject-btn">
+            <i class="fas fa-plus"></i> Ajouter une matière
+        </button>
+        
+        <div class="subject-list" id="subjects-container">
+            <!-- Les matières seront ajoutées ici dynamiquement -->
+        </div>
+    </div>
+    
+    <div class="actions">
+        <button class="btn btn-primary" onclick="window.print()">
+            <i class="fas fa-print"></i> Imprimer
+        </button>
+        <button class="btn btn-secondary" onclick="exportToExcel()">
+            <i class="fas fa-file-excel"></i> Exporter Excel
+        </button>
+        <button class="btn btn-success" id="add-student-btn">
+            <i class="fas fa-plus"></i> Ajouter étudiant
+        </button>
+        <button class="btn btn-danger" id="reset-btn">
+            <i class="fas fa-undo"></i> Réinitialiser
+        </button>
+        <button class="btn btn-primary" id="publish-btn">
+            <i class="fas fa-share-square"></i> Publier les résultats
+        </button>
+    </div>
+    
+    <div class="scroll-container">
+        <table id="grades-table">
+            <thead>
+                <tr id="table-header-row">
+                    <th rowspan="2">N°</th>
+                    <th rowspan="2">Matricule</th>
+                    <th rowspan="2">Moy. S1</th>
+                    <!-- Les colonnes des matières seront ajoutées ici dynamiquement -->
+                    <th rowspan="2">Actions</th>
+                </tr>
+                <tr id="subjects-header-row">
+                    <!-- La deuxième ligne d'en-tête sera remplie dynamiquement -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Les lignes seront générées dynamiquement par JavaScript -->
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="footer" id="document-footer">
+        <p>Le Président du Jury: Sofiane KASMI<br>
+        Tunis le, 17/02/2025</p>
+    </div>
+
+    <div class="backup-section">
+        <h2>Sauvegarde et Récupération</h2>
+        <div class="actions">
+            <button class="btn btn-secondary" id="export-data-btn">
+                <i class="fas fa-file-export"></i> Exporter données
+            </button>
+            <button class="btn btn-secondary" id="import-data-btn">
+                <i class="fas fa-file-import"></i> Importer données
+            </button>
+            <button class="btn btn-primary" id="restore-defaults-btn">
+                <i class="fas fa-magic"></i> Restaurer les valeurs par défaut
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal pour ajouter/modifier un étudiant -->
+    <div class="modal" id="student-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title" id="modal-title">Ajouter un étudiant</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <form id="student-form">
+                <div class="form-group">
+                    <label for="student-id">Matricule</label>
+                    <input type="text" class="form-control" id="student-id" required>
+                </div>
+                <div class="form-group">
+                    <label for="student-name">Nom complet</label>
+                    <input type="text" class="form-control" id="student-name" required>
+                </div>
+                
+                <div id="student-grades-container">
+                    <!-- Les champs de notes seront ajoutés ici dynamiquement -->
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger close-modal">Annuler</button>
+                    <button type="submit" class="btn btn-success">Enregistrer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de confirmation de publication -->
+    <div class="modal" id="publish-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Confirmation de publication</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="form-group">
+                <p>Êtes-vous sûr de vouloir publier ces résultats ? Une fois publiés, ils seront visibles par les étudiants concernés.</p>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="send-notification">
+                    <label class="form-check-label" for="send-notification">Envoyer une notification par email aux étudiants</label>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger close-modal">Annuler</button>
+                <button type="button" class="btn btn-success" id="confirm-publish">Confirmer la publication</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de confirmation de restauration -->
+    <div class="modal" id="restore-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Confirmation de restauration</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="form-group">
+                <p>Voulez-vous vraiment restaurer les valeurs par défaut ? Cette action va :</p>
+                <ul>
+                    <li>Réinitialiser la configuration administrative</li>
+                    <li>Restaurer les matières par défaut</li>
+                    <li>Ajouter un étudiant exemple</li>
+                    <li>Effacer toutes les données actuelles</li>
+                </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger close-modal">Annuler</button>
+                <button type="button" class="btn btn-success" id="confirm-restore">Confirmer la restauration</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration initiale
+        const config = {
+            institution: "École Nationale Supérieure d'Ingénieur de Tunis",
+            formation: "Formation d'Ingénieurs en Mathématiques appliquées et Modélisation",
+            className: "GMAM1",
+            academicYear: "2024-2025",
+            semester: "1",
+            juryPresident: "Sofiane KASMI",
+            publicationDate: "2025-02-17",
+            subjects: [],
+            isPublished: false
+        };
+
+        // Données des étudiants
+        let studentsData = [];
+
+        // Données par défaut
+        const DEFAULT_CONFIG = {
+            institution: "École Nationale Supérieure d'Ingénieur de Tunis",
+            formation: "Formation d'Ingénieurs en Mathématiques appliquées et Modélisation",
+            className: "GMAM1",
+            academicYear: "2024-2025",
+            semester: "1",
+            juryPresident: "Sofiane KASMI",
+            publicationDate: "2025-02-17",
+            subjects: [
+                { name: "Mathématiques 1", abbr: "Math1", coef: 2.5 },
+                { name: "Analyse Numérique 1", abbr: "A&Num1", coef: 4 },
+                { name: "Conférences", abbr: "Conf", coef: 7 },
+                { name: "Optimisation 1", abbr: "Optim1", coef: 2.5 },
+                { name: "Anglais Fonctionnel 2", abbr: "Ang_Fonc2", coef: 5 },
+                { name: "Analyse Modèle", abbr: "Ana_Modèle", coef: 6 },
+                { name: "Algorithmique et Structures de Données", abbr: "ASD", coef: 3 },
+                { name: "Langage C", abbr: "Lg C", coef: 3 },
+                { name: "Démarche d'Assurance Qualité 1", abbr: "DAQ1", coef: 1.5 },
+                { name: "Technique de Communication Écrit 1", abbr: "TC_Écrit1", coef: 1.5 },
+                { name: "Technique de Communication CS", abbr: "TC_CS", coef: 1 }
+            ],
+            isPublished: false
+        };
+
+        const DEFAULT_STUDENTS = [
+            {
+                id: "2024001",
+                name: "Étudiant Exemple",
+                grades: {
+                    "Math1": { note: 12.00, cr: 3 },
+                    "A&Num1": { note: 10.50, cr: 4 },
+                    "Conf": { note: 14.00, cr: 7 },
+                    "Optim1": { note: 15.00, cr: 3 },
+                    "Ang_Fonc2": { note: 11.50, cr: 5 },
+                    "Ana_Modèle": { note: 13.00, cr: 6 },
+                    "ASD": { note: 9.50, cr: 0 },
+                    "Lg C": { note: 12.50, cr: 3 },
+                    "DAQ1": { note: 14.00, cr: 1 },
+                    "TC_Écrit1": { note: 13.50, cr: 1 },
+                    "TC_CS": { note: 12.00, cr: 1 }
+                },
+                average: 12.45
+            }
+        ];
+
+        // Initialisation de l'application
+        document.addEventListener('DOMContentLoaded', function() {
+            // Charger la configuration depuis le localStorage
+            loadConfig();
+            
+            // Mettre à jour l'interface avec la configuration
+            updateInterfaceFromConfig();
+            
+            // Générer le tableau des notes
+            generateGradesTable();
+            
+            // Configurer les écouteurs d'événements
+            setupEventListeners();
+        });
+
+        // Fonctions principales
+        function loadConfig() {
+            const savedConfig = localStorage.getItem('gradesConfig');
+            const savedStudents = localStorage.getItem('gradesStudentsData');
+            const publishedStatus = localStorage.getItem('gradesPublishedStatus');
+            
+            if (savedConfig && savedStudents) {
+                // Charger les données sauvegardées
+                Object.assign(config, JSON.parse(savedConfig));
+                studentsData = JSON.parse(savedStudents);
+                config.isPublished = publishedStatus === 'true';
+            } else {
+                // Charger les valeurs par défaut
+                restoreDefaultData(false);
+            }
+        }
+
+        function saveConfig() {
+            localStorage.setItem('gradesConfig', JSON.stringify(config));
+            localStorage.setItem('gradesStudentsData', JSON.stringify(studentsData));
+            localStorage.setItem('gradesPublishedStatus', config.isPublished.toString());
+        }
+
+        function restoreDefaultData(showAlert = true) {
+            // Restaurer la configuration par défaut
+            Object.assign(config, JSON.parse(JSON.stringify(DEFAULT_CONFIG)));
+            
+            // Restaurer les étudiants par défaut
+            studentsData = JSON.parse(JSON.stringify(DEFAULT_STUDENTS));
+            
+            // Sauvegarder
+            saveConfig();
+            
+            // Mettre à jour l'interface
+            updateInterfaceFromConfig();
+            generateGradesTable();
+            
+            if (showAlert) {
+                alert("Les valeurs par défaut ont été restaurées avec succès !");
+            }
+        }
+
+        function updateInterfaceFromConfig() {
+            // Mettre à jour les champs de configuration
+            document.getElementById('institution-name').value = config.institution;
+            document.getElementById('formation-name').value = config.formation;
+            document.getElementById('class-name').value = config.className;
+            document.getElementById('academic-year').value = config.academicYear;
+            document.getElementById('semester').value = config.semester;
+            document.getElementById('jury-president').value = config.juryPresident;
+            document.getElementById('publication-date').value = config.publicationDate;
+            
+            // Mettre à jour l'en-tête de l'institution
+            document.getElementById('institution-header').innerHTML = `
+                <p>République Tunisienne<br>
+                Ministère de l'Enseignement Supérieur et de la Recherche Scientifique<br>
+                Université de Tunis<br>
+                ${config.institution}</p>
+            `;
+            
+            // Mettre à jour le titre principal
+            document.getElementById('main-header').innerHTML = `
+                <h1>Relevé de Notes - Semestre ${config.semester}</h1>
+                <p>${config.formation}<br>
+                Classe: ${config.className} | Année universitaire: ${config.academicYear}</p>
+            `;
+            
+            // Mettre à jour le pied de page
+            document.getElementById('document-footer').innerHTML = `
+                <p>Le Président du Jury: ${config.juryPresident}<br>
+                Tunis le, ${formatPublicationDate(config.publicationDate)}</p>
+            `;
+            
+            // Mettre à jour la liste des matières
+            updateSubjectsList();
+        }
+
+        function formatPublicationDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric' });
+        }
+
+        function updateSubjectsList() {
+            const container = document.getElementById('subjects-container');
+            container.innerHTML = '';
+            
+            config.subjects.forEach((subject, index) => {
+                const subjectElement = document.createElement('div');
+                subjectElement.className = 'subject-item';
+                subjectElement.innerHTML = `
+                    ${subject.name} (${subject.abbr}) - Coef: ${subject.coef}
+                    <span class="remove-subject" data-index="${index}">
+                        <i class="fas fa-times"></i>
+                    </span>
+                `;
+                container.appendChild(subjectElement);
+            });
+            
+            // Ajouter des écouteurs d'événements pour les boutons de suppression
+            document.querySelectorAll('.remove-subject').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    removeSubject(index);
+                });
+            });
+        }
+
+        function removeSubject(index) {
+            if (confirm(`Voulez-vous vraiment supprimer la matière "${config.subjects[index].name}" ?`)) {
+                config.subjects.splice(index, 1);
+                updateSubjectsList();
+                generateGradesTable();
+                saveConfig();
+            }
+        }
+
+        function generateGradesTable() {
+            const table = document.getElementById('grades-table');
+            const headerRow = document.getElementById('table-header-row');
+            const subjectsHeaderRow = document.getElementById('subjects-header-row');
+            
+            // Nettoyer les en-têtes existants (en gardant les 3 premières colonnes fixes)
+            while (headerRow.cells.length > 3) {
+                headerRow.deleteCell(3);
+            }
+            
+            subjectsHeaderRow.innerHTML = '';
+            
+            // Ajouter les colonnes pour chaque matière
+            config.subjects.forEach(subject => {
+                // Ajouter à la première ligne d'en-tête
+                const th1 = document.createElement('th');
+                th1.colSpan = 2;
+                th1.textContent = `${subject.abbr}/${subject.coef}`;
+                headerRow.appendChild(th1);
+                
+                // Ajouter à la deuxième ligne d'en-tête
+                const thNote = document.createElement('th');
+                thNote.textContent = 'Note';
+                subjectsHeaderRow.appendChild(thNote);
+                
+                const thCr = document.createElement('th');
+                thCr.textContent = 'Cr';
+                subjectsHeaderRow.appendChild(thCr);
+            });
+            
+            // Générer le corps du tableau
+            const tbody = document.querySelector('#grades-table tbody');
+            tbody.innerHTML = '';
+            
+            studentsData.forEach((student, index) => {
+                const row = document.createElement('tr');
+                row.className = student.average >= 10 ? 'passed' : 'failed';
+                
+                // Numéro, Matricule, Moyenne
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${student.id}</td>
+                    <td>${student.average.toFixed(2)}</td>
+                `;
+                
+                // Ajouter les colonnes pour chaque matière
+                config.subjects.forEach(subject => {
+                    const subjectAbbr = subject.abbr;
+                    const grade = student.grades[subjectAbbr] || { note: 0, cr: 0 };
+                    
+                    row.innerHTML += `
+                        <td class="editable" contenteditable="true" data-field="${subjectAbbr}-note">${grade.note.toFixed(2)}</td>
+                        <td>${grade.cr}</td>
+                    `;
+                });
+                
+                // Bouton d'actions
+                row.innerHTML += `
+                    <td>
+                        <button class="btn btn-danger btn-sm delete-student" data-id="${student.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                
+                tbody.appendChild(row);
+            });
+            
+            updateSummary();
+        }
+
+        function updateSummary() {
+            if (studentsData.length === 0) {
+                document.getElementById('student-count').textContent = "0";
+                document.getElementById('class-average').textContent = "0.00";
+                document.getElementById('best-average').textContent = "0.00 (Aucun étudiant)";
+                document.getElementById('success-rate').textContent = "0%";
+                return;
+            }
+            
+            document.getElementById('student-count').textContent = studentsData.length;
+            
+            const averages = studentsData.map(s => s.average);
+            const classAverage = averages.reduce((a, b) => a + b, 0) / averages.length;
+            document.getElementById('class-average').textContent = classAverage.toFixed(2);
+            
+            const bestStudent = studentsData.reduce((prev, current) => 
+                (prev.average > current.average) ? prev : current
+            );
+            document.getElementById('best-average').textContent = 
+                `${bestStudent.average.toFixed(2)} (Étudiant ${bestStudent.id})`;
+            
+            const successRate = (studentsData.filter(s => s.average >= 10).length / studentsData.length) * 100;
+            document.getElementById('success-rate').textContent = `${successRate.toFixed(1)}%`;
+        }
+
+        function calculateStudentAverage(student) {
+            let totalPoints = 0;
+            let totalCoefs = 0;
+            
+            config.subjects.forEach(subject => {
+                const subjectAbbr = subject.abbr;
+                const grade = student.grades[subjectAbbr] || { note: 0, cr: 0 };
+                
+                // Calculer les crédits en fonction de la note
+                const cr = grade.note >= 10 ? subject.coef : 0;
+                student.grades[subjectAbbr].cr = cr;
+                
+                totalPoints += grade.note * subject.coef;
+                totalCoefs += subject.coef;
+            });
+            
+            return totalCoefs > 0 ? totalPoints / totalCoefs : 0;
+        }
+
+        function exportToExcel() {
+            // Ici vous implémenteriez la logique d'export Excel
+            alert("Fonctionnalité d'export Excel sera implémentée ici");
+            // En production, vous utiliseriez une bibliothèque comme SheetJS
+        }
+
+        function exportData() {
+            const data = {
+                config: config,
+                students: studentsData,
+                published: config.isPublished
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `grades_backup_${new Date().toISOString().slice(0,10)}.json`;
+            a.click();
+            
+            URL.revokeObjectURL(url);
+        }
+
+        function importData() {
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = '.json';
+            
+            input.onchange = e => {
+                const file = e.target.files[0];
+                const reader = new FileReader();
+                
+                reader.onload = event => {
+                    try {
+                        const data = JSON.parse(event.target.result);
+                        
+                        if (confirm("Voulez-vous remplacer les données actuelles par celles du fichier ?")) {
+                            Object.assign(config, data.config);
+                            studentsData = data.students;
+                            config.isPublished = data.published;
+                            
+                            saveConfig();
+                            updateInterfaceFromConfig();
+                            generateGradesTable();
+                            
+                            alert("Données importées avec succès !");
+                        }
+                    } catch (error) {
+                        alert("Erreur lors de la lecture du fichier : " + error.message);
+                    }
+                };
+                
+                reader.readAsText(file);
+            };
+            
+            input.click();
+        }
+
+        function setupEventListeners() {
+            // Mise à jour de l'en-tête
+            document.getElementById('update-header-btn').addEventListener('click', function() {
+                config.institution = document.getElementById('institution-name').value;
+                config.formation = document.getElementById('formation-name').value;
+                config.className = document.getElementById('class-name').value;
+                config.academicYear = document.getElementById('academic-year').value;
+                config.semester = document.getElementById('semester').value;
+                config.juryPresident = document.getElementById('jury-president').value;
+                config.publicationDate = document.getElementById('publication-date').value;
+                
+                updateInterfaceFromConfig();
+                saveConfig();
+            });
+            
+            // Ajout d'une nouvelle matière
+            document.getElementById('add-subject-btn').addEventListener('click', function() {
+                const name = document.getElementById('new-subject-name').value.trim();
+                const coef = parseFloat(document.getElementById('new-subject-coef').value);
+                const abbr = document.getElementById('new-subject-abbr').value.trim();
+                
+                if (!name || !abbr || isNaN(coef) || coef <= 0) {
+                    alert("Veuillez remplir tous les champs avec des valeurs valides");
+                    return;
+                }
+                
+                // Vérifier si la matière existe déjà
+                if (config.subjects.some(s => s.abbr === abbr)) {
+                    alert("Une matière avec cette abréviation existe déjà");
+                    return;
+                }
+                
+                config.subjects.push({ name, abbr, coef });
+                
+                // Réinitialiser les champs
+                document.getElementById('new-subject-name').value = '';
+                document.getElementById('new-subject-coef').value = '1';
+                document.getElementById('new-subject-abbr').value = '';
+                
+                updateSubjectsList();
+                generateGradesTable();
+                saveConfig();
+            });
+            
+            // Gestion de l'édition des notes
+            document.addEventListener('focusout', function(e) {
+                if (e.target.classList.contains('editable')) {
+                    const newValue = parseFloat(e.target.textContent);
+                    if (isNaN(newValue)) {
+                        alert("Veuillez entrer un nombre valide");
+                        e.target.textContent = "0.00";
+                        return;
+                    }
+
+                    const row = e.target.closest('tr');
+                    const studentId = row.cells[1].textContent;
+                    const field = e.target.getAttribute('data-field');
+                    
+                    // Trouver l'étudiant dans les données
+                    const student = studentsData.find(s => s.id === studentId);
+                    if (!student) return;
+
+                    // Mettre à jour la note
+                    if (field.includes('-note')) {
+                        const subjectAbbr = field.split('-')[0];
+                        
+                        // Initialiser les notes si elles n'existent pas
+                        if (!student.grades[subjectAbbr]) {
+                            student.grades[subjectAbbr] = { note: 0, cr: 0 };
+                        }
+                        
+                        student.grades[subjectAbbr].note = newValue;
+                        
+                        // Recalculer la moyenne
+                        student.average = calculateStudentAverage(student);
+                        
+                        // Mettre à jour l'affichage
+                        row.cells[2].textContent = student.average.toFixed(2);
+                        row.className = student.average >= 10 ? 'passed' : 'failed';
+                        
+                        // Mettre à jour les crédits (colonnes paires après les 3 premières)
+                        const subjectIndex = config.subjects.findIndex(s => s.abbr === subjectAbbr);
+                        if (subjectIndex !== -1) {
+                            const crCell = row.cells[3 + (subjectIndex * 2) + 1];
+                            const cr = newValue >= 10 ? config.subjects[subjectIndex].coef : 0;
+                            crCell.textContent = cr;
+                            student.grades[subjectAbbr].cr = cr;
+                        }
+                    }
+
+                    updateSummary();
+                    saveConfig();
+                }
+            });
+            
+            // Gestion de la modal d'ajout d'étudiant
+            const modal = document.getElementById('student-modal');
+            const addBtn = document.getElementById('add-student-btn');
+            const closeBtns = document.querySelectorAll('.close-modal');
+            const form = document.getElementById('student-form');
+            const gradesContainer = document.getElementById('student-grades-container');
+
+            addBtn.addEventListener('click', function() {
+                document.getElementById('modal-title').textContent = "Ajouter un étudiant";
+                form.reset();
+                
+                // Générer les champs pour les notes
+                gradesContainer.innerHTML = '';
+                config.subjects.forEach(subject => {
+                    const div = document.createElement('div');
+                    div.className = 'form-group';
+                    div.innerHTML = `
+                        <label for="student-${subject.abbr}">${subject.name} (${subject.abbr})</label>
+                        <input type="number" step="0.01" min="0" max="20" class="form-control" 
+                               id="student-${subject.abbr}" placeholder="Note">
+                    `;
+                    gradesContainer.appendChild(div);
+                });
+                
+                modal.style.display = 'flex';
+            });
+
+            closeBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    if (this.closest('.modal')) {
+                        this.closest('.modal').style.display = 'none';
+                    }
+                });
+            });
+
+            window.addEventListener('click', function(e) {
+                if (e.target.classList.contains('modal')) {
+                    e.target.style.display = 'none';
+                }
+            });
+
+            // Soumission du formulaire d'étudiant
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const studentId = document.getElementById('student-id').value;
+                const studentName = document.getElementById('student-name').value;
+                
+                if (!studentId || !studentName) {
+                    alert("Veuillez remplir tous les champs obligatoires");
+                    return;
+                }
+                
+                // Vérifier si l'étudiant existe déjà
+                if (studentsData.some(s => s.id === studentId)) {
+                    alert("Un étudiant avec ce matricule existe déjà");
+                    return;
+                }
+                
+                // Créer un nouvel étudiant avec des notes par défaut
+                const newStudent = {
+                    id: studentId,
+                    name: studentName,
+                    grades: {},
+                    average: 0
+                };
+                
+                // Récupérer les notes saisies
+                config.subjects.forEach(subject => {
+                    const note = parseFloat(document.getElementById(`student-${subject.abbr}`).value) || 0;
+                    const cr = note >= 10 ? subject.coef : 0;
+                    
+                    newStudent.grades[subject.abbr] = { note, cr };
+                });
+                
+                // Calculer la moyenne
+                newStudent.average = calculateStudentAverage(newStudent);
+                
+                // Ajouter à la liste
+                studentsData.push(newStudent);
+                
+                // Regénérer le tableau
+                generateGradesTable();
+                
+                // Fermer la modal
+                modal.style.display = 'none';
+                
+                // Sauvegarder
+                saveConfig();
+            });
+            
+            // Suppression d'un étudiant
+            document.addEventListener('click', function(e) {
+                if (e.target.classList.contains('delete-student') || 
+                    e.target.closest('.delete-student')) {
+                    const button = e.target.classList.contains('delete-student') ? 
+                        e.target : e.target.closest('.delete-student');
+                    
+                    const studentId = button.getAttribute('data-id');
+                    
+                    if (confirm(`Voulez-vous vraiment supprimer l'étudiant ${studentId} ?`)) {
+                        const index = studentsData.findIndex(s => s.id === studentId);
+                        if (index !== -1) {
+                            studentsData.splice(index, 1);
+                            generateGradesTable();
+                            saveConfig();
+                        }
+                    }
+                }
+            });
+            
+            // Réinitialisation des données
+            document.getElementById('reset-btn').addEventListener('click', function() {
+                if (confirm("Voulez-vous vraiment réinitialiser toutes les données ? Cette action va supprimer tous les étudiants et matières.")) {
+                    studentsData = [];
+                    config.subjects = [];
+                    
+                    saveConfig();
+                    updateInterfaceFromConfig();
+                    generateGradesTable();
+                }
+            });
+            
+            // Publication des résultats
+            document.getElementById('publish-btn').addEventListener('click', function() {
+                if (studentsData.length === 0) {
+                    alert("Aucun étudiant à publier. Veuillez d'abord ajouter des étudiants.");
+                    return;
+                }
+                
+                document.getElementById('publish-modal').style.display = 'flex';
+            });
+            
+            document.getElementById('confirm-publish').addEventListener('click', function() {
+                const sendNotification = document.getElementById('send-notification').checked;
+                
+                config.isPublished = true;
+                saveConfig();
+                
+                alert("Les résultats ont été publiés avec succès" + 
+                      (sendNotification ? " et les notifications ont été envoyées." : "."));
+                
+                document.getElementById('publish-modal').style.display = 'none';
+            });
+            
+            // Export/Import des données
+            document.getElementById('export-data-btn').addEventListener('click', exportData);
+            document.getElementById('import-data-btn').addEventListener('click', importData);
+            
+            // Restauration des valeurs par défaut
+            document.getElementById('restore-defaults-btn').addEventListener('click', function() {
+                document.getElementById('restore-modal').style.display = 'flex';
+            });
+            
+            document.getElementById('confirm-restore').addEventListener('click', function() {
+                restoreDefaultData();
+                document.getElementById('restore-modal').style.display = 'none';
+            });
+        }
+    </script>
+</body>
+</html>

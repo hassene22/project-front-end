@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingénierie Mathématique Appliquée et Modélisation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        nav {
+            background-color: var(--dark-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        nav li {
+            margin: 0 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+        }
+        
+        nav a:hover {
+            color: var(--secondary-color);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        section {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('math-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h2 {
+            color: white;
+            border-bottom: none;
+            font-size: 2rem;
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+        }
+        
+        .card-body {
+            padding: 1.5rem;
+        }
+        
+        .card-body ul {
+            padding-left: 1.5rem;
+        }
+        
+        .card-body li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .feature-icon {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+            margin-top: 0.3rem;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            text-align: left;
+            padding: 0 2rem;
+        }
+        
+        .footer-section h3 {
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .footer-section a{
+            color: #3498db;
+        }
+        .footer-section a:hover{
+            color: #7cb8df;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary-color);
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ingénierie Mathématique Appliquée et Modélisation</h1>
+        <p>Formation d'excellence pour les futurs ingénieurs mathématiciens</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#presentation"><i class="fas fa-info-circle"></i> Présentation</a></li>
+            <li><a href="#programme"><i class="fas fa-book"></i> Programme</a></li>
+            <li><a href="#competences"><i class="fas fa-cogs"></i> Compétences</a></li>
+            <li><a href="#debouchés"><i class="fas fa-briefcase"></i> Débouchés</a></li>
+            <li><a href="up1.html"><i class="fas fa-home"></i> Accueil</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h2>Devenez ingénieur en mathématiques appliquées</h2>
+            <p>Une formation pluridisciplinaire alliant rigueur mathématique et applications concrètes</p>
+        </section>
+
+        <section id="presentation">
+            <h2>Présentation de la formation</h2>
+            <p>La formation d'Ingénieur en Mathématiques Appliquées et Modélisation forme des experts capables de développer et d'utiliser des outils mathématiques avancés pour résoudre des problèmes complexes dans divers domaines industriels et scientifiques.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h3>Diplôme accrédité</h3>
+                        <p>Formation reconnue par l'État et les organismes professionnels, délivrant le titre d'Ingénieur.</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div>
+                        <h3>Encadrement personnalisé</h3>
+                        <p>Un suivi individualisé avec des enseignants-chercheurs et des professionnels du secteur.</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div>
+                        <h3>Approche pratique</h3>
+                        <p>Mise en œuvre concrète des connaissances à travers des projets et des études de cas réels.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="programme">
+            <h2>Programme de la formation</h2>
+            <p>Notre programme équilibré combine théorie mathématique avancée et applications pratiques dans divers domaines industriels.</p>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-header">
+                        Mathématiques Fondamentales
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Analyse numérique et optimisation</li>
+                            <li>Équations différentielles et aux dérivées partielles</li>
+                            <li>Probabilités et statistiques avancées</li>
+                            <li>Analyse fonctionnelle et théorie des opérateurs</li>
+                            <li>Algèbre linéaire et théorie des matrices</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        Informatique et Calcul Scientifique
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Algorithmique avancée</li>
+                            <li>Programmation scientifique (Python, MATLAB, R)</li>
+                            <li>Calcul haute performance</li>
+                            <li>Analyse de données massives</li>
+                            <li>Simulation numérique</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        Applications Sectorielles
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Finance quantitative</li>
+                            <li>Modélisation industrielle</li>
+                            <li>Data science et intelligence artificielle</li>
+                            <li>Ingénierie des systèmes complexes</li>
+                            <li>Recherche opérationnelle</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="competences">
+            <h2>Compétences acquises</h2>
+            <p>À l'issue de la formation, les diplômés maîtriseront les compétences suivantes :</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div>
+                        <h3>Modélisation mathématique</h3>
+                        <p>Capacité à formaliser des problèmes complexes sous forme mathématique et à développer des modèles pertinents.</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div>
+                        <h3>Analyse de données</h3>
+                        <p>Maîtrise des techniques statistiques et d'apprentissage automatique pour l'extraction de connaissances.</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-project-diagram"></i>
+                    </div>
+                    <div>
+                        <h3>Optimisation de systèmes</h3>
+                        <p>Conception et amélioration de processus industriels et organisationnels par des méthodes mathématiques.</p>
+                    </div>
+                </div>
+                
+                <div class="feature">
+                    <div class="feature-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div>
+                        <h3>Développement logiciel</h3>
+                        <p>Implémentation d'algorithmes mathématiques complexes dans des environnements professionnels.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="debouchés">
+            <h2>Débouchés professionnels</h2>
+            <p>Nos diplômés évoluent dans des secteurs variés où l'expertise mathématique est valorisée :</p>
+            
+            <div class="card-container">
+                <div class="card">
+                    <div class="card-header">
+                        Secteurs d'activité
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Banque et assurance (finance quantitative, gestion des risques)</li>
+                            <li>Industrie (aéronautique, automobile, énergie)</li>
+                            <li>Santé et pharmacie (modélisation biologique, essais cliniques)</li>
+                            <li>Technologie (big data, intelligence artificielle)</li>
+                            <li>Consulting et recherche opérationnelle</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-header">
+                        Métiers accessibles
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Ingénieur modélisateur</li>
+                            <li>Data scientist</li>
+                            <li>Quant analyst</li>
+                            <li>Ingénieur en simulation numérique</li>
+                            <li>Consultant en optimisation</li>
+                            <li>Chercheur en mathématiques appliquées</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Contact</h3>
+               <i class="fas fa-map-marker-alt"></i> Adresse: Montfleury <br>Avenue Taha Hussein,1008</p>
+                <p><i class="fas fa-phone"></i> Téléphone: +216 71 391 166</p>
+                <p><i class="fas fa-envelope"></i> Departement_math@ensit.rnu.tn</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Réseaux sociaux</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Liens rapides</h3>
+                <ul>
+                    <li><a href="actualité.html" >Actualités</a></li>
+                    <li><a href="contact.html" >Contact</a></li>
+                    <li><a href="departement.html" >À-propos de Département</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <p>&copy; 2025 Département de Mathématiques - Tous droits réservés</p>
+    </footer>
+</body>
+</html>

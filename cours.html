@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Département de Mathématiques - ENSIT</title>
+    <style>
+        :root {
+            --primary-blue: #1a4b8c;
+            --secondary-blue: #2a6fdb;
+            --light-blue: #e6f0fa;
+            --dark-blue: #0d2b4e;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f9ff;
+            color: #333;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        nav {
+            background-color: var(--dark-blue);
+            padding: 0.8rem 0;
+        }
+        
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin: 0 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+        
+        .welcome-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border-left: 4px solid var(--secondary-blue);
+        }
+        
+        h1, h2, h3 {
+            color: var(--primary-blue);
+        }
+        
+        .courses-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .course-category {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+        
+        .course-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .course-list li {
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .course-list a {
+            color: var(--secondary-blue);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        
+        .course-list a:hover {
+            background-color: var(--light-blue);
+        }
+        
+        .download-btn {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 0.3rem 0.8rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+            display: inline-block;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+        
+        .download-btn:hover {
+            background-color: var(--secondary-blue);
+        }
+        
+        .professor {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.3rem;
+        }
+        
+        footer {
+            background-color: var(--dark-blue);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .courses-section {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">École Supérieure des Ingénieurs de Tunis</div>
+        <div class="subtitle">Département de Mathématiques</div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="up1.html">Accueil</a></li>
+            
+            <li><a href="actualité.html">Actualités</a></li>
+            
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <div class="container">
+        <section id="accueil" class="welcome-section">
+            <h1>Bienvenue sur la plateforme étudiante</h1>
+            <p>Cette plateforme vous permet d'accéder à tous les cours du département de mathématiques organisés par année d'étude, matière et professeur. Téléchargez les ressources pédagogiques, restez informés des actualités du département et trouvez toutes les informations dont vous avez besoin pour votre parcours universitaire.</p>
+        </section>
+        
+        <h2>Accès aux cours par année</h2>
+        
+        <div class="courses-section">
+            <section id="premiere-annee" class="course-category">
+                <h3>1ère Année</h3>
+                <ul class="course-list">
+                    <li>
+                        <a href="#">Analyse numérique</a>
+                        <div class="professor">Prof.berzig</div>
+                        <a href="cours/algebre_lineaire.pdf" class="download-btn" download>Télécharger le cours</a>
+                    </li>
+                    <li>
+                        <a href="#">Analyse fonctionelle</a>
+                        <div class="professor">Prof. yaekoubi</div>
+                        <a href="cours/analyse_reele.pdf" class="download-btn" download>Télécharger le cours</a>
+                    </li>
+                    <li>
+                        <a href="#">Probabilités</a>
+                        <div class="professor">Prof.sofien</div>
+                        <a href="cours/probabilites.pdf" class="download-btn" download>Télécharger le cours</a>
+                    </li>
+                    <li>
+                        <a href="#">Algorithmique</a>
+                        <div class="professor">Prof. houda</div>
+                        <a href="cours/algorithmique.pdf" class="download-btn" download>Télécharger le cours</a>
+                    </li>
+                </ul>
+            </section>
+            
+            <section id="deuxieme-annee" class="course-category">
+                <h3>2ème Année</h3>
+                <ul class="course-list">
+                    <li>
+                        <a href="#">Topologie</a>
+                        <div class="professor">Prof. yaekoubi</div>
+                        <a href="cours/topologie.pdf" class="download-btn" download>Télécharger le cours</a>
+                    </li>
+                   
+                    <li>
+                        <a href="#">Statistiques</a>
+                        <div class="professor">Prof. sofien</div>
+                        <a href="cours/statistiques.pdf" class="download-btn" download>Télécharger le cours</a>
+                    </li>
+                   
+                </ul>
+            </section>
+            
+            <section id="troisieme-annee" class="course-category">
+                <h3>3ème Année</h3>
+                <ul class="course-list">
+                    <li>
+                        <a href="#">Théorie des Groupes</a>
+                        <div class="professor">Prof.berzig</div>
+                        <a href="cours/theorie_groupes.pdf" class="download-btn" download>Télécharger le cours</a>
+                    </li>
+                    <li>
+                        <a href="#">Analyse Fonctionnelle</a>
+                        <div class="professor">Prof. yaekoubi</div>
+                        <a href="cours/analyse_fonctionnelle.pdf" class="download-btn" download>Télécharger le cours</a>
+                    </li>
+                    <li>
+                        <a href="#">Modélisation Mathématique</a>
+                        <div class="professor">Prof. saber</div>
+                        <a href="cours/modelisation.pdf" class="download-btn" download>Télécharger le cours</a>
+                    </li>
+                    <li>
+                        <a href="#">Recherche Opérationnelle</a>
+                        <div class="professor">Prof. berzig</div>
+                        <a href="cours/recherche_operationnelle.pdf" class="download-btn" download>Télécharger le cours</a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 École Supérieure des Ingénieurs de Tunis - Tous droits réservés</p>
+        <p>Contact: math@esit.tn | Tél: +216 70 000 000</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page pour les Étudiants</title>
+    <link rel="stylesheet" href="étudiant.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#ressources">Ressources</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero">
+        <h1>Bienvenue, Étudiants!</h1>
+        <p>Cette page est conçue pour vous aider à trouver les ressources dont vous avez besoin pour réussir vos études.</p>
+    </section>
+
+    <section id="ressources" class="resources">
+        <h2>Ressources</h2>
+        <div class="resource-list">
+            <div class="resource-item">
+                <h3>Cours en Ligne</h3>
+                <p>Accédez à des cours en ligne gratuits pour améliorer vos compétences.</p>
+                <a href="#" class="btn">Voir les Cours</a>
+            </div>
+            <div class="resource-item">
+                <h3>Livres PDF</h3>
+                <p>Téléchargez des livres PDF pour approfondir vos connaissances.</p>
+                <a href="#" class="btn">Télécharger</a>
+            </div>
+            <div class="resource-item">
+                <h3>Forums de Discussion</h3>
+                <p>Rejoignez des forums pour discuter avec d'autres étudiants.</p>
+                <a href="#" class="btn">Rejoindre</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>Si vous avez des questions, n'hésitez pas à nous contacter.</p>
+        <form>
+            <label for="name">Nom:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+            
+            <button type="submit" class="btn">Envoyer</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Page pour les Étudiants. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
